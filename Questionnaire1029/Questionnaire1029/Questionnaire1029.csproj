@@ -70,9 +70,15 @@
     <Content Include="ConfirmPage.aspx" />
     <Content Include="Form.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="js\jquery.min.js" />
     <Content Include="List.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Stastic.aspx" />
     <Content Include="SystemAdmin\Detail.aspx" />
+    <Content Include="SystemAdmin\DetailCount.aspx" />
+    <Content Include="SystemAdmin\DetailData.aspx" />
+    <Content Include="SystemAdmin\DetailQa.aspx" />
+    <Content Include="SystemAdmin\DetailSurvey.aspx" />
     <Content Include="SystemAdmin\FAQ.aspx" />
     <Content Include="SystemAdmin\List.aspx" />
     <Content Include="Web.config" />
@@ -102,6 +108,13 @@
     <Compile Include="List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -130,6 +143,34 @@
     </Compile>
     <Compile Include="SystemAdmin\Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAdmin\DetailCount.aspx.cs">
+      <DependentUpon>DetailCount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\DetailCount.aspx.designer.cs">
+      <DependentUpon>DetailCount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAdmin\DetailData.aspx.cs">
+      <DependentUpon>DetailData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\DetailData.aspx.designer.cs">
+      <DependentUpon>DetailData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAdmin\DetailQa.aspx.cs">
+      <DependentUpon>DetailQa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\DetailQa.aspx.designer.cs">
+      <DependentUpon>DetailQa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAdmin\DetailSurvey.aspx.cs">
+      <DependentUpon>DetailSurvey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\DetailSurvey.aspx.designer.cs">
+      <DependentUpon>DetailSurvey.aspx</DependentUpon>
     </Compile>
     <Compile Include="SystemAdmin\FAQ.aspx.cs">
       <DependentUpon>FAQ.aspx</DependentUpon>

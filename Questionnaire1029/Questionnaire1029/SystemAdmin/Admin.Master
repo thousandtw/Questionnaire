@@ -4,17 +4,57 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>問卷管理</title>
+    <style type="text/css">
+        .aaa {
+            BORDER-TOP-STYLE: none;
+            BORDER-RIGHT-STYLE: none;
+            BORDER-LEFT-STYLE: none;
+            BACKGROUND-COLOR: #ffcc33;
+            BORDER-BOTTOM-STYLE: none
+        }
+
+        .bbb {
+            BORDER-TOP-STYLE: none;
+            BORDER-RIGHT-STYLE: none;
+            BORDER-LEFT-STYLE: none;
+            BACKGROUND-COLOR: #99ffcc;
+            BORDER-BOTTOM-STYLE: none
+        }
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <table>
+                <tr>
+                    <td>
+                        <h1>問卷管理</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="List.aspx">問卷管理</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="FAQ.aspx">常用問題管理</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+
+            </table>
         </div>
+
     </form>
 </body>
 </html>
