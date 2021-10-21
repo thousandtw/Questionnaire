@@ -11,7 +11,7 @@ namespace Questionnaire1029.SystemAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            IFRAME1.Attributes.Add("src", "DetailSurvey.aspx");
         }
 
         protected void btnSurvey_Click(object sender, EventArgs e)

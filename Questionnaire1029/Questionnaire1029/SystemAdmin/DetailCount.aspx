@@ -1,8 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SystemAdmin/Admin.Master" AutoEventWireup="true" CodeBehind="DetailCount.aspx.cs" Inherits="Questionnaire1029.SystemAdmin.DetailCount" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetailCount.aspx.cs" Inherits="Questionnaire1029.SystemAdmin.DetailCount" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
         <table>
             <tr>
                 <th>1.測試文字方塊(必填欄位)</th>
@@ -32,4 +39,6 @@
            
         </table>
     </div>
-</asp:Content>
+    </form>
+</body>
+</html>

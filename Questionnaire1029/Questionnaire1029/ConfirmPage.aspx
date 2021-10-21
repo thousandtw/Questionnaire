@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="float: right; text-align: right">
-        <asp:Label ID="lblVote" runat="server" Text="投票中"></asp:Label>
+        <asp:Label ID="lblVote" runat="server" Text="投票中"></asp:Label><br />
         <asp:Label ID="lblTime" runat="server" Text="Label"></asp:Label>
     </div>
     <div>
@@ -15,25 +15,25 @@
             <tr>
                 <th>姓名</th>
                 <td>
-                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblaName" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <th>手機</th>
                 <td>
-                    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblMobilePhone" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <th>Email</th>
                 <td>
-                    <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblEmail" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <th>年齡</th>
                 <td>
-                    <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblAge" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
         </table>

@@ -1,9 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SystemAdmin/Admin.Master" AutoEventWireup="true" CodeBehind="DetailSurvey.aspx.cs" Inherits="Questionnaire1029.SystemAdmin.DetailSurvey" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetailSurvey.aspx.cs" Inherits="Questionnaire1029.SystemAdmin.DetailSurvey" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
         <table>
             <tr>
                 <th>問卷名稱</th>
@@ -42,4 +48,6 @@
             </tr>
         </table>
     </div>
-</asp:Content>
+    </form>
+</body>
+</html>

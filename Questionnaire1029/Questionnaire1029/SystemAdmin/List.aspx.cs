@@ -13,5 +13,10 @@ namespace Questionnaire1029.SystemAdmin
         {
 
         }
+
+        protected void btnCrt_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SystemAdmin/Detail.aspx");
+        }
     }
 }

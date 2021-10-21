@@ -1,8 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SystemAdmin/Admin.Master" AutoEventWireup="true" CodeBehind="DetailData.aspx.cs" Inherits="Questionnaire1029.SystemAdmin.DetailData" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetailData.aspx.cs" Inherits="Questionnaire1029.SystemAdmin.DetailData" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+         <table>
         <tr>
             <td>
                 <asp:Button ID="btnSend" runat="server" Text="匯出" />
@@ -30,4 +37,6 @@
                 </asp:GridView>
         </tr>
     </table>
-</asp:Content>
+    </form>
+</body>
+</html>
