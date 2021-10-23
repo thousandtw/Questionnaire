@@ -18,7 +18,7 @@
     <br />
     <div>
         <span>
-            <asp:Button ID="btnLogin" runat="server" Text="登入" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnCancle" runat="server" Text="取消" />
+            <asp:Button ID="btnLogin" runat="server" Text="登入" OnClick="btnLogin_Click"/>
         </span>
     </div>
 </asp:Content>
