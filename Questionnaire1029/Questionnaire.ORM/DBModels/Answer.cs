@@ -43,31 +43,5 @@ namespace Questionnaire.ORM.DBModels
         [StringLength(50)]
         public string QC_ansrd1 { get; set; }
 
-        [StringLength(50)]
-        public string QC_ansrd2 { get; set; }
-
-        [StringLength(50)]
-        public string QC_ansrd3 { get; set; }
-
-        [StringLength(50)]
-        public string QC_ansrd4 { get; set; }
-
-        [StringLength(50)]
-        public string QC_ansrd5 { get; set; }
-
-        [StringLength(50)]
-        public string QC_ansrd6 { get; set; }
-
-        [StringLength(50)]
-        public string QC_ansrd7 { get; set; }
-
-        [StringLength(50)]
-        public string QC_ansrd8 { get; set; }
-
-        [StringLength(50)]
-        public string QC_ansrd9 { get; set; }
-
-        [StringLength(50)]
-        public string QC_ansrd10 { get; set; }
     }
 }

@@ -11,7 +11,10 @@ namespace Questionnaire1029
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (HttpContext.Current.Session["Answer"] == null)
+            {
+                HttpContext.Current.Response.Redirect("List.aspx");
+            }
         }
     }
 }

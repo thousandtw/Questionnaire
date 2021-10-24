@@ -12,5 +12,10 @@ namespace Questionnaire.Auth
         {
             throw ex;
         }
+
+        internal static void WriteLog(Exception ex)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

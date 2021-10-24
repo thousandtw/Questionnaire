@@ -9,6 +9,22 @@ namespace Questionnaire.Auth
 {
     public class AuthManager
     {
+        public static void CreateAnswer(Answer answer)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    context.Answers.Add(answer);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+            }
+        }
+
         public static List<Theme> GetThemeByDate( DateTime startTime, DateTime endTime)
         {
             using (ContextModel context = new ContextModel())
@@ -30,7 +46,73 @@ namespace Questionnaire.Auth
             }
         }
 
-        public static List<Theme> GetThemesByHeader(string header)
+       
+
+        public static Theme GetThemeByID (int id)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    var query =
+                        (from item in context.Themes
+                         where item.T_id == id
+                         select item);
+
+                    var obj = query.FirstOrDefault();
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
+            }
+        }
+
+        public static Question GetQuestionByID(int id)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    var query =
+                        (from item in context.Questions
+                         where item.T_id == id
+                         select item);
+
+                    var obj = query.FirstOrDefault();
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
+            }
+        }
+
+        public static List<Question> GetQuestionList(int id)
+        {
+            using (ContextModel context = new ContextModel())
+            {
+                try
+                {
+                    var query = (from item in context.Questions
+                                 where item.T_id == id
+                                 select item);
+
+                    var list = query.ToList();
+                    return list;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Writelog(ex);
+                    return null;
+                }
+            }
+        }
+            public static List<Theme> GetThemesByHeader(string header)
         {
             using (ContextModel context = new ContextModel())
             {
@@ -51,14 +133,14 @@ namespace Questionnaire.Auth
             }
         }
 
-        public static List<Theme> GeThemeList_OrderByTime()
+        public static List<Theme> GeThemeList_ByState()
         {
             using (ContextModel context = new ContextModel())
             {
                 try
                 {
                     var query = (from item in context.Themes
-                                 orderby item.T_start descending
+                                 where item.T_state==1
                                  select item);
 
                     var list = query.ToList();

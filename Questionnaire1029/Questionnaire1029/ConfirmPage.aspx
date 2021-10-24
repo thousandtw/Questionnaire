@@ -40,6 +40,27 @@
     </div>
     <br />
     <div>
-        <asp:GridView ID="gdvVote" runat="server"></asp:GridView>
+        <p>1.請投票</p>
+        <asp:CheckBoxList ID="CblVote" runat="server"></asp:CheckBoxList>
+    </div>
+    <br />
+    <div>
+        &nbsp;
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <asp:Button ID="Button1" runat="server" Text="修改" />
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>
+                    <asp:Button ID="Button2" runat="server" Text="送出" />
+                </td>
+            </tr>
+        </table>
     </div>
 </asp:Content>

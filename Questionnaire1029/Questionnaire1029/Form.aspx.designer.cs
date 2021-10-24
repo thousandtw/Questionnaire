@@ -15,13 +15,13 @@ namespace Questionnaire1029
     {
 
         /// <summary>
-        /// lblVote 控制項。
+        /// lblState 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVote;
+        protected global::System.Web.UI.WebControls.Label lblState;
 
         /// <summary>
         /// lblTime 控制項。
@@ -42,13 +42,13 @@ namespace Questionnaire1029
         protected global::System.Web.UI.WebControls.Label lblHeader;
 
         /// <summary>
-        /// lblDetail 控制項。
+        /// lblMemo 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDetail;
+        protected global::System.Web.UI.WebControls.Label lblMemo;
 
         /// <summary>
         /// txbName 控制項。
@@ -87,12 +87,30 @@ namespace Questionnaire1029
         protected global::System.Web.UI.WebControls.TextBox txbAge;
 
         /// <summary>
-        /// gdvVote 控制項。
+        /// CblVote 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gdvVote;
+        protected global::System.Web.UI.WebControls.CheckBoxList CblVote;
+
+        /// <summary>
+        /// btnCel 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCel;
+
+        /// <summary>
+        /// Button2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

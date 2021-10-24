@@ -14,7 +14,7 @@ namespace Questionnaire1029
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var list = AuthManager.GeThemeList_OrderByTime();
+            var list = AuthManager.GeThemeList_ByState();
             this.gv_list.DataSource = list;
             if (list.Count > 0)
             {
@@ -53,11 +53,6 @@ namespace Questionnaire1029
         {
             int startindex = (this.GetcurrentPage() - 1) * 10;
             return list.Skip(startindex).Take(10).ToList();
-        }
-
-        protected void txbHeader_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         protected void btnSer_Click(object sender, EventArgs e)
@@ -160,5 +155,7 @@ namespace Questionnaire1029
                 this.ltlMsg.Text = "<span style='color:red'>問卷標題或問卷時間,請選擇其中一項搜尋</span>";
             }
         }
+
+        protected void txbHeader_TextChanged(object sender, EventArgs e) { }
     }
 }

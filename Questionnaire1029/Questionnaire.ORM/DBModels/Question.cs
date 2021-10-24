@@ -15,36 +15,8 @@ namespace Questionnaire.ORM.DBModels
         public int T_id { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string ANSR_1 { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string ANSR_2 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_3 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_4 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_5 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_6 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_7 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_8 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_9 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_10 { get; set; }
+        [StringLength(1000)]
+        public string ANSR { get; set; }
 
         public int ANSR_sum { get; set; }
     }
