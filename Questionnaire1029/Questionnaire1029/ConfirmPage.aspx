@@ -4,12 +4,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="float: right; text-align: right">
-        <asp:Label ID="lblVote" runat="server" Text="投票中"></asp:Label><br />
+        <asp:Label ID="lblVote" runat="server" Text="Label"></asp:Label><br />
         <asp:Label ID="lblTime" runat="server" Text="Label"></asp:Label>
     </div>
+     <br />
     <div>
-        <asp:Label ID="lblHeader" runat="server" Text="Label"></asp:Label>
+        &nbsp;
     </div>
+    <div>
+        &nbsp;
+    </div>
+    <br />
+    <div style="text-align: center">
+        <asp:Label ID="lblHeader" runat="server" Text="Label" Font-Size="XX-Large"></asp:Label>
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <br />
     <div>
         <table>
             <tr>
@@ -40,8 +52,8 @@
     </div>
     <br />
     <div>
-        <p>1.請投票</p>
-        <asp:CheckBoxList ID="CblVote" runat="server"></asp:CheckBoxList>
+        <p>1.已投票</p>
+        <asp:ListBox ID="ltbVote" runat="server"></asp:ListBox>
     </div>
     <br />
     <div>
@@ -51,14 +63,14 @@
         <table>
             <tr>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Text="修改" />
+                    <asp:Button ID="Button1" runat="server" Text="取消" OnClick="Button1_Click" />
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>
-                    <asp:Button ID="Button2" runat="server" Text="送出" />
+                    <asp:Button ID="btnSend" runat="server" Text="送出" OnClick="btnSend_Click"/>
                 </td>
             </tr>
         </table>

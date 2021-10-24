@@ -16,12 +16,13 @@ namespace Questionnaire.Auth
                 using (ContextModel context = new ContextModel())
                 {
                     context.Answers.Add(answer);
+                    
                     context.SaveChanges();
                 }
             }
             catch (Exception ex)
             {
-                Logger.WriteLog(ex);
+                Logger.Writelog(ex);
             }
         }
 

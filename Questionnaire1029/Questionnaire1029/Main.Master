@@ -15,6 +15,8 @@
             <h1>動態問卷系統</h1>
         </div>
         <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server" OnPreRender="ScriptManager1_PreRender">
+            </asp:ScriptManager>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>

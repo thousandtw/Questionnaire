@@ -18,6 +18,7 @@ namespace Questionnaire1029
             if (!IsPostBack)
             {
                 string idtxt = this.Request.QueryString["ID"];
+
                 int id = int.Parse(idtxt);
                 if (id > 0)
                 {
@@ -39,41 +40,42 @@ namespace Questionnaire1029
                         CblVote.Items.Add(sArray[i].ToString());
                     }
                 }
-            }    
+
+            }
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            
-                string idtxt = this.Request.QueryString["ID"];
-                int id = int.Parse(idtxt);
-                var name = txbName.Text;
-                var phome = txbMobilePhone.Text;
-                var email = txbEmail.Text;
-                var age = txbAge.Text;
 
-                StringBuilder sbTest = new StringBuilder();
+            string idtxt = this.Request.QueryString["ID"];
+            int id = int.Parse(idtxt);
+            var name = txbName.Text;
+            var phome = txbMobilePhone.Text;
+            var email = txbEmail.Text;
+            var age = txbAge.Text;
 
-                for (int i = 0; i < CblVote.Items.Count; i++)
+            StringBuilder sbAnswer = new StringBuilder();
+
+            for (int i = 0; i < CblVote.Items.Count; i++)
+            {
+                if (CblVote.Items[i].Selected)
                 {
-                    if (CblVote.Items[i].Selected)
-                    {
-                        sbTest.Append(CblVote.Items[i].Value.Trim() + ", ");
-                    }
+                    sbAnswer.Append(CblVote.Items[i].Value.Trim() + ", ");
                 }
-                sbTest = sbTest.Remove(sbTest.Length - 2, 2);
+            }
+            sbAnswer = sbAnswer.Remove(sbAnswer.Length - 2, 2);
 
-                DataTable objectValue = new DataTable();
-                objectValue.Columns.Add("問卷名稱");
-                objectValue.Columns.Add("姓名");
-                objectValue.Columns.Add("手機");
-                objectValue.Columns.Add("電子信箱");
-                objectValue.Columns.Add("年齡");
-                objectValue.Columns.Add("回答");
-                objectValue.Rows.Add(id, name, phome, email, age, sbTest);
+            DataTable objectValue = new DataTable();
+            objectValue.Columns.Add("問卷名稱");
+            objectValue.Columns.Add("姓名");
+            objectValue.Columns.Add("手機");
+            objectValue.Columns.Add("電子信箱");
+            objectValue.Columns.Add("年齡");
+            objectValue.Columns.Add("回答");
+            objectValue.Rows.Add(id, name, phome, email, age, sbAnswer);
 
-                Session.Add("Answer", objectValue);
-          
+            Session.Add("Answer", objectValue);
+
             Response.Redirect("ConfirmPage.aspx");
         }
 
