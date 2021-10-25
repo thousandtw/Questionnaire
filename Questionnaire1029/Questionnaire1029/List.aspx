@@ -41,7 +41,7 @@
                 <asp:BoundField DataField="T_end" HeaderText="結束日期" DataFormatString="{0:d}" />
                 <asp:TemplateField HeaderText="觀看統計">
                     <ItemTemplate>
-                        <a href="Stastic.aspx">前往</a>
+                        <a href="Stastic.aspx?ID=<%# Eval("T_id")%>">前往</a>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

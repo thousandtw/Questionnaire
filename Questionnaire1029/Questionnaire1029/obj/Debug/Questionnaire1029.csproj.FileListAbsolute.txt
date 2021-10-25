@@ -66,3 +66,13 @@ D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\EntityFramework.xml
 D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\EntityFramework.SqlServer.xml
 D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Questionnaire.Auth.dll
 D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Questionnaire.Auth.pdb
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Antlr3.Runtime.dll
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Iesi.Collections.dll
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\NHibernate.dll
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Remotion.Linq.dll
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Remotion.Linq.EagerFetching.dll
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Antlr3.Runtime.xml
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Iesi.Collections.xml
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\NHibernate.xml
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Remotion.Linq.xml
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Remotion.Linq.EagerFetching.xml
