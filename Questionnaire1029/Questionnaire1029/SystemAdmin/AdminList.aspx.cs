@@ -8,32 +8,35 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Questionnaire1029
+namespace Questionnaire1029.SystemAdmin
 {
     public partial class List : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Session["User"] == null)
+            if (!IsPostBack)
             {
-                HttpContext.Current.Response.Redirect("/Login.aspx");
-            }
+                if (HttpContext.Current.Session["User"] == null)
+                {
+                    HttpContext.Current.Response.Redirect("/Login.aspx");
+                }
 
-            var list = AuthManager.GeThemeList_ByState();
-            this.gv_list.DataSource = list;
-            if (list.Count > 0)
-            {
-                var PagedList = this.GetPagedDataTable(list);
-                this.gv_list.DataSource = PagedList;
-                this.gv_list.DataBind();
+                var list = AuthManager.GeThemeList_ByState();
+                this.gv_list.DataSource = list;
+                if (list.Count > 0)
+                {
+                    var PagedList = this.GetPagedDataTable(list);
+                    this.gv_list.DataSource = PagedList;
+                    this.gv_list.DataBind();
 
-                this.ucPager.TotalSize = list.Count;
-                this.ucPager.Bind();
-            }
-            else
-            {
-                this.gv_list.Visible = false;
-                this.plcNoData.Visible = true;
+                    this.ucPager.TotalSize = list.Count;
+                    this.ucPager.Bind();
+                }
+                else
+                {
+                    this.gv_list.Visible = false;
+                    this.plcNoData.Visible = true;
+                }
             }
         }
 
@@ -58,6 +61,11 @@ namespace Questionnaire1029
         {
             int startindex = (this.GetcurrentPage() - 1) * 10;
             return list.Skip(startindex).Take(10).ToList();
+        }
+
+        protected void btnCrt_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SystemAdmin/Detail.aspx");
         }
 
         protected void btnSer_Click(object sender, EventArgs e)
@@ -161,6 +169,22 @@ namespace Questionnaire1029
             }
         }
 
-        protected void txbHeader_TextChanged(object sender, EventArgs e) { }
+        protected void btnDel_Click(object sender, EventArgs e)
+        {
+            foreach (GridViewRow row in gv_list.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox cbox = (row.Cells[0].FindControl("CheckBox1") as CheckBox);
+                    Label lbID = (Label)row.FindControl("lbID");
+                    if (cbox.Checked)
+                    {
+                        int id = int.Parse(lbID.Text);
+                        AuthManager.DeleteTheme(id);
+                    }
+                }
+            }
+            Response.Redirect("/SystemAdmin/AdminList.aspx");
+        }
     }
 }

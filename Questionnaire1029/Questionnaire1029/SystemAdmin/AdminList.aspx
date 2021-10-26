@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="Questionnaire1029.List" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SystemAdmin/Admin.Master" AutoEventWireup="true" CodeBehind="AdminList.aspx.cs" Inherits="Questionnaire1029.SystemAdmin.List" %>
 
 <%@ Register Src="~/UserControls/ucPager.ascx" TagPrefix="uc1" TagName="ucPager" %>
-
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -11,7 +10,7 @@
             <tr>
                 <th>問卷標題</th>
                 <td>
-                    <asp:TextBox ID="txbHeader" runat="server" OnTextChanged="txbHeader_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txbHeader" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -24,15 +23,24 @@
     </div>
     <br />
     <div>
+        <asp:Button ID="btnCrt" runat="server" Text="新增" OnClick="btnCrt_Click" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnDel" runat="server" Text="刪除" OnClick="btnDel_Click" />
+    </div>
+    <div>
         <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2">
             <Columns>
-                <asp:BoundField DataField="T_id" HeaderText="#" />
-                <asp:TemplateField HeaderText="問卷名稱">
+                <asp:TemplateField HeaderText="勾選">
                     <ItemTemplate>
-                        <a href="Form.aspx?ID=<%# Eval("T_id")%>"><%# Eval("T_title")%></a>
+                        <asp:CheckBox ID="CheckBox1" runat="server" />
+                        <asp:Label ID="lbID" runat="server" Text='<%# Eval("T_id") %>' Visible="false" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                 <asp:TemplateField HeaderText="狀態">
+                <asp:BoundField DataField="T_id" HeaderText="編號" />
+                <asp:TemplateField HeaderText="問卷名稱">
+                    <ItemTemplate>
+                        <a href="../Form.aspx?ID=<%# Eval("T_id")%>"><%# Eval("T_title")%></a>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="狀態">
                     <ItemTemplate>
                         <a>投票中</a>
                     </ItemTemplate>
@@ -41,7 +49,7 @@
                 <asp:BoundField DataField="T_end" HeaderText="結束日期" DataFormatString="{0:d}" />
                 <asp:TemplateField HeaderText="觀看統計">
                     <ItemTemplate>
-                        <a href="Stastic.aspx?ID=<%# Eval("T_id")%>">前往</a>
+                        <a href="../Stastic.aspx?ID=<%# Eval("T_id")%>">前往</a>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -55,7 +63,7 @@
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
         <asp:Literal runat="server" ID="ltPager"></asp:Literal>
-        <uc1:ucPager runat="server" ID="ucPager" PageSize="10" CurrentPage="1" TotalSize="10" Url="List.aspx" />
+        <uc1:ucPager runat="server" ID="ucPager" PageSize="10" CurrentPage="1" TotalSize="10" Url="AdminList.aspx" />
         <asp:PlaceHolder ID="plcNoData" runat="server" Visible="false">
             <p style="color: red; background-color: cornflowerblue">
                 沒有紀錄...

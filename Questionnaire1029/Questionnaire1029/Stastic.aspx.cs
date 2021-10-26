@@ -25,8 +25,8 @@ namespace Questionnaire1029
                 {
                     var theme = AuthManager.GetThemeByID(id);
                     this.lblHeader.Text = theme.T_title;
-                    string[] xValues = new string[20];
-                    int[] yValues = new int[20];
+                    string[] xValues = new string[50];
+                    int[] yValues = new int[50];
                     List<string> MsgList = new List<string>();
 
                     var qc = AuthManager.GetAnswerListByID(id);

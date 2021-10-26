@@ -9,7 +9,27 @@ namespace Questionnaire.Auth
 {
     public class AuthManager
     {
-        
+        public static void DeleteTheme(int id)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    var obj = context.Themes.Where(o => o.T_id == id).FirstOrDefault();
+                   
+                    if (obj != null)
+                    {
+                        context.Themes.Remove(obj);
+                        context.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+            }
+        }
+
         public static List<Answer> GetAnswerListByID(int id)
         {
             using (ContextModel context = new ContextModel())

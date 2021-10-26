@@ -27,7 +27,18 @@ namespace Questionnaire1029
                 return;
             }
 
-            Response.Redirect("List.aspx");
+            var level = UserInfoManager.GetUserInfobyAccount_ORM(inp_Account);
+            if (level.User_level == 0)
+            {
+                Session["User"] = this.txbAccount.Text;
+                Response.Redirect("~/SystemAdmin/AdminList.aspx");
+            }
+            else
+            {
+                Session["User"] = this.txbAccount.Text;
+                Response.Redirect("List.aspx");
+            }
+
         }
     }
 }

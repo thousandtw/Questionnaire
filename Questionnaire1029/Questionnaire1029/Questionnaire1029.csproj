@@ -107,7 +107,7 @@
     <Content Include="SystemAdmin\DetailQa.aspx" />
     <Content Include="SystemAdmin\DetailSurvey.aspx" />
     <Content Include="SystemAdmin\FAQ.aspx" />
-    <Content Include="SystemAdmin\List.aspx" />
+    <Content Include="SystemAdmin\AdminList.aspx" />
     <Content Include="UserControls\ucPager.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -207,12 +207,12 @@
     <Compile Include="SystemAdmin\FAQ.aspx.designer.cs">
       <DependentUpon>FAQ.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SystemAdmin\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
+    <Compile Include="SystemAdmin\AdminList.aspx.cs">
+      <DependentUpon>AdminList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SystemAdmin\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
+    <Compile Include="SystemAdmin\AdminList.aspx.designer.cs">
+      <DependentUpon>AdminList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucPager.ascx.cs">
       <DependentUpon>ucPager.ascx</DependentUpon>

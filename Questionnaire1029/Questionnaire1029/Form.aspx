@@ -34,19 +34,24 @@
             <tr>
                 <th>手機</th>
                 <td>
-                    <asp:TextBox ID="txbMobilePhone" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txbMobilePhone" runat="server" TextMode="Phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <th>Email</th>
                 <td>
-                    <asp:TextBox ID="txbEmail" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txbEmail" runat="server" TextMode="Email"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <th>年齡</th>
                 <td>
                     <asp:TextBox ID="txbAge" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Literal ID="ltMsg" runat="server"></asp:Literal><br />
                 </td>
             </tr>
         </table>

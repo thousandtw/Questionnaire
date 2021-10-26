@@ -70,7 +70,7 @@ namespace Questionnaire1029
 
             Answer answer = new Answer()
             {
-                A_id = int.Parse(DateTime.Now.ToString("mmss")),
+                A_id = int.Parse(DateTime.Now.ToString("MMddHHmmss")),
                 T_id = int.Parse(id),
                 A_name = name,
                 A_phone = phone,
