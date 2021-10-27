@@ -33,11 +33,6 @@ namespace Questionnaire.ORM.DBModels
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Theme>()
-                .Property(e => e.T_mustKeyin)
-                .IsFixedLength()
-                .IsUnicode(false);
-
             modelBuilder.Entity<Userinfo>()
                 .Property(e => e.User_phone)
                 .IsUnicode(false);

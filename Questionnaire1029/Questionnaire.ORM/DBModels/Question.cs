@@ -15,10 +15,19 @@ namespace Questionnaire.ORM.DBModels
 
         public int T_id { get; set; }
 
+        [StringLength(100)]
+        public string QT { get; set; }
+
         [Required]
         [StringLength(1000)]
         public string ANSR { get; set; }
 
         public int ANSR_sum { get; set; }
+
+        [StringLength(2)]
+        public string Q_type { get; set; }
+
+        [StringLength(1)]
+        public string Q_mustKeyin { get; set; }
     }
 }

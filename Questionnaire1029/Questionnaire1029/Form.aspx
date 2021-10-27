@@ -58,7 +58,7 @@
     </div>
     <br />
     <div>
-        <p>1.請投票</p>
+        <asp:Label ID="lblQT" runat="server" Text="Label"></asp:Label>
         <asp:CheckBoxList ID="CblVote" runat="server"></asp:CheckBoxList>
     </div>
     <br />

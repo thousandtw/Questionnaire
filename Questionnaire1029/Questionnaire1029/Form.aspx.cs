@@ -23,6 +23,9 @@ namespace Questionnaire1029
                 int id = int.Parse(idtxt);
                 if (id > 0)
                 {
+                    var GID = AuthManager.GetQuestionByID(id);
+                    string A = GID.ANSR;
+                    string[] sArray = A.Split(',');
                     var ID = AuthManager.GetThemeByID(id);
                     if (ID.T_state == 1)
                     {
@@ -30,11 +33,8 @@ namespace Questionnaire1029
                         this.lblTime.Text = $"{ID.T_start.ToString()} ~ {ID.T_end.ToString()}";
                         this.lblHeader.Text = ID.T_title;
                         this.lblMemo.Text = ID.T_memo;
+                        this.lblQT.Text = GID.QT;
                     }
-
-                    var GID = AuthManager.GetQuestionByID(id);
-                    string A = GID.ANSR;
-                    string[] sArray = A.Split(',');
 
                     for (int i = 0; i < sArray.Length; i++)
                     {

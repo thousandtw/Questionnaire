@@ -33,11 +33,5 @@ namespace Questionnaire.ORM.DBModels
         [Column(Order = 4)]
         [StringLength(250)]
         public string T_memo { get; set; }
-
-        [StringLength(2)]
-        public string T_type { get; set; }
-
-        [StringLength(1)]
-        public string T_mustKeyin { get; set; }
     }
 }
