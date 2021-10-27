@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire1029", "Questi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire.Auth", "Questionnaire.Auth\Questionnaire.Auth.csproj", "{EC7B9898-2F29-4C96-A577-0D418A80ED82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire.ORM", "Questionnaire.ORM\Questionnaire.ORM.csproj", "{7AF2EB30-E061-4C70-A28B-494306B6CCE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire.ORM", "Questionnaire.ORM\Questionnaire.ORM.csproj", "{E62DFCB3-4092-4CBE-853C-EE41AB017F4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{EC7B9898-2F29-4C96-A577-0D418A80ED82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC7B9898-2F29-4C96-A577-0D418A80ED82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC7B9898-2F29-4C96-A577-0D418A80ED82}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AF2EB30-E061-4C70-A28B-494306B6CCE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AF2EB30-E061-4C70-A28B-494306B6CCE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7AF2EB30-E061-4C70-A28B-494306B6CCE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AF2EB30-E061-4C70-A28B-494306B6CCE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E62DFCB3-4092-4CBE-853C-EE41AB017F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E62DFCB3-4092-4CBE-853C-EE41AB017F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E62DFCB3-4092-4CBE-853C-EE41AB017F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E62DFCB3-4092-4CBE-853C-EE41AB017F4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

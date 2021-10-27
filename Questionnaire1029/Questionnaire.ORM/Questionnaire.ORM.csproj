@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7AF2EB30-E061-4C70-A28B-494306B6CCE1}</ProjectGuid>
+    <ProjectGuid>{E62DFCB3-4092-4CBE-853C-EE41AB017F4C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Questionnaire.ORM</RootNamespace>
@@ -58,6 +58,7 @@
     <Compile Include="DBModels\Userinfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

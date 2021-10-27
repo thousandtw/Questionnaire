@@ -38,12 +38,12 @@
             </tr>
             <tr>
                 <td>
-                    <asp:CheckBox ID="CheckBox1" runat="server" />已啟用
+                    <asp:CheckBox ID="CkbUse" runat="server" />已啟用  <asp:Literal ID="ltMsg" runat="server"></asp:Literal>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="btnCel" runat="server" Text="取消" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnSed" runat="server" Text="送出" />
+                    <asp:Button ID="btnCel" runat="server" Text="取消" OnClick="btnCel_Click"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnSed" runat="server" Text="送出" OnClick="btnSed_Click"/>
                 </td>
             </tr>
         </table>

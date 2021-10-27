@@ -10,38 +10,29 @@ namespace Questionnaire.ORM.DBModels
     public partial class Answer
     {
         [Key]
-        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int A_id { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int T_id { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
+        [Required]
         [StringLength(50)]
         public string A_name { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
+        [Required]
         [StringLength(10)]
         public string A_phone { get; set; }
 
-        [Key]
-        [Column(Order = 4)]
+        [Required]
         [StringLength(50)]
         public string A_email { get; set; }
 
-        [Key]
-        [Column(Order = 5)]
+        [Required]
         [StringLength(3)]
         public string A_age { get; set; }
 
-        [Key]
-        [Column(Order = 6)]
+        [Required]
         [StringLength(50)]
         public string QC_ansrd1 { get; set; }
-
     }
 }

@@ -10,6 +10,7 @@ namespace Questionnaire.ORM.DBModels
     public partial class Question
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Q_id { get; set; }
 
         public int T_id { get; set; }

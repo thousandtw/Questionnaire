@@ -9,27 +9,34 @@ namespace Questionnaire.ORM.DBModels
     [Table("Theme")]
     public partial class Theme
     {
-        [Key]
-        public int T_id { get; set; }
+        public int? T_id { get; set; }
 
-        [Required]
+        [Key]
+        [Column(Order = 0)]
         [StringLength(150)]
         public string T_title { get; set; }
 
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int T_state { get; set; }
 
-        public DateTime? T_start { get; set; }
+        [Key]
+        [Column(Order = 2)]
+        public DateTime T_start { get; set; }
 
-        public DateTime? T_end { get; set; }
+        [Key]
+        [Column(Order = 3)]
+        public DateTime T_end { get; set; }
 
+        [Key]
+        [Column(Order = 4)]
         [StringLength(250)]
         public string T_memo { get; set; }
 
-        [Required]
         [StringLength(2)]
         public string T_type { get; set; }
 
-        [Required]
         [StringLength(1)]
         public string T_mustKeyin { get; set; }
     }

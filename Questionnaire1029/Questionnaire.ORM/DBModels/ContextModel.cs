@@ -12,19 +12,14 @@ namespace Questionnaire.ORM.DBModels
         {
         }
 
-        public virtual DbSet<Question> Questions { get; set; }
-        public virtual DbSet<Theme> Themes { get; set; }
         public virtual DbSet<Answer> Answers { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Question_Common> Question_Common { get; set; }
+        public virtual DbSet<Theme> Themes { get; set; }
         public virtual DbSet<Userinfo> Userinfoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Theme>()
-                .Property(e => e.T_mustKeyin)
-                .IsFixedLength()
-                .IsUnicode(false);
-
             modelBuilder.Entity<Answer>()
                 .Property(e => e.A_phone)
                 .IsUnicode(false);
@@ -35,6 +30,11 @@ namespace Questionnaire.ORM.DBModels
 
             modelBuilder.Entity<Question_Common>()
                 .Property(e => e.QC_mustKeyin)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Theme>()
+                .Property(e => e.T_mustKeyin)
                 .IsFixedLength()
                 .IsUnicode(false);
 

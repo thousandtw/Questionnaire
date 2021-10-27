@@ -9,6 +9,45 @@ namespace Questionnaire.Auth
 {
     public class AuthManager
     {
+        public static Theme GetTheme()
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    var query = (from item in context.Themes
+                                 where item.T_state==1 
+                                 orderby item.T_id descending
+                                 select item);
+
+                    var obj = query.FirstOrDefault();
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
+            }
+        }
+
+        public static void CreateTheme(Theme theme)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    context.Themes.Add(theme);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Writelog(ex);
+            }
+        }
+
         public static void DeleteTheme(int id)
         {
             try
@@ -183,7 +222,8 @@ namespace Questionnaire.Auth
                 try
                 {
                     var query = (from item in context.Themes
-                                 where item.T_state==1
+                                 where item.T_state==1 
+                                 orderby item.T_id descending
                                  select item);
 
                     var list = query.ToList();
