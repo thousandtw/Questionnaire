@@ -9,6 +9,23 @@ namespace Questionnaire.Auth
 {
     public class AuthManager
     {
+        public static void CreateQT(Question question)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    context.Questions.Add(question);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Writelog(ex);
+            }
+        }
+
         public static Theme GetTheme()
         {
             try

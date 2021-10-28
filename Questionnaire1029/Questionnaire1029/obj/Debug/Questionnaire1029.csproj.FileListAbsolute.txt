@@ -76,3 +76,5 @@ D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Iesi.Collections.xm
 D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\NHibernate.xml
 D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Remotion.Linq.xml
 D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Remotion.Linq.EagerFetching.xml
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Bogus.dll
+D:\Questionnaire1029\Questionnaire1029\Questionnaire1029\bin\Bogus.xml

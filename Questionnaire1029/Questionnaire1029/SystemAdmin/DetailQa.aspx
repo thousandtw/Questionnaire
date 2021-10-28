@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnDel" runat="server" Text="刪除" />
+                        <asp:Button ID="btnDel" runat="server" Text="刪除" OnClick="btnDel_Click"/><asp:Literal ID="ltlMsg" runat="server"></asp:Literal>
                     </td>
 
                 </tr>
@@ -61,11 +61,11 @@
 
                             <asp:BoundField DataField="must" HeaderText="必填" />
 
-                            <asp:TemplateField HeaderText="">
+                           <%-- <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <a href="DetailQa.aspx?ID=<%# Eval("Q_id")%>">編輯</a>
+                                    <a href="DetailQa.aspx?ID=<%# Eval("Qd")%>">編輯</a>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                         <FooterStyle BackColor="#CCCCCC" />
                         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -80,7 +80,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnCel" runat="server" Text="取消" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnSed" runat="server" Text="送出" OnClick="btnSed_Click" />
+                        <asp:Button ID="btnCel" runat="server" Text="取消" OnClick="btnCel_Click"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnSed" runat="server" Text="送出" OnClick="btnSed_Click" />
                     </td>
                 </tr>
             </table>

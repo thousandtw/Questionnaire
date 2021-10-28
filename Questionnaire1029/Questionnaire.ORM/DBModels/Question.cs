@@ -24,10 +24,10 @@ namespace Questionnaire.ORM.DBModels
 
         public int ANSR_sum { get; set; }
 
-        [StringLength(2)]
+        [StringLength(10)]
         public string Q_type { get; set; }
 
-        [StringLength(1)]
+        [StringLength(10)]
         public string Q_mustKeyin { get; set; }
     }
 }

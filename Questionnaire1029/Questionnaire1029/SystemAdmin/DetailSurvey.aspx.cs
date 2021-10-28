@@ -64,6 +64,7 @@ namespace Questionnaire1029.SystemAdmin
                 T_end = end,
             };
             AuthManager.CreateTheme(theme);
+            Session["T_id"] = id;
             Response.Redirect("DetailQa.aspx");
         }
 
