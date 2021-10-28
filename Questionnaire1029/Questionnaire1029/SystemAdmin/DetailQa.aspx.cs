@@ -86,7 +86,12 @@ namespace Questionnaire1029.SystemAdmin
                         drCurrentRow = dtCurrentTable.NewRow();
                         drCurrentRow["qt"] = txtQT.Text;
                         drCurrentRow["ans"] = txbAns.Text;
-                        drCurrentRow["type"] = ddl_QT.Text;
+                        string value;
+                        if (ddl_QT.SelectedValue == "1")
+                        {
+                             value = "複選方塊";
+                            drCurrentRow["type"] = value;
+                        }
                         drCurrentRow["must"] = must;
                         drCurrentRow["Qd"] = 0;
                     }

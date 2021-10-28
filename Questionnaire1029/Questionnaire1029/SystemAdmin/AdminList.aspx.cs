@@ -181,6 +181,8 @@ namespace Questionnaire1029.SystemAdmin
                     {
                         int id = int.Parse(lbID.Text);
                         AuthManager.DeleteTheme(id);
+                        AuthManager.DeleteQuestion(id);
+                        AuthManager.DeleteAnswer(id);
                     }
                 }
             }

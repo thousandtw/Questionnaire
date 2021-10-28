@@ -54,7 +54,17 @@ namespace Questionnaire1029
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("List.aspx");
+            var Account = this.Session["User"].ToString();
+            var level = UserInfoManager.GetUserInfobyAccount_ORM(Account);
+
+            if (level.User_level == 0)
+            {
+                Response.Redirect("~/SystemAdmin/AdminList.aspx");
+            }
+            else
+            {
+                Response.Redirect("List.aspx");
+            }
         }
 
         protected void btnSend_Click(object sender, EventArgs e)
@@ -79,7 +89,17 @@ namespace Questionnaire1029
                 QC_ansrd1 = Answers
             };
             AuthManager.CreateAnswer(answer);
-            Response.Redirect("List.aspx");
+            var Account = this.Session["User"].ToString();
+            var level = UserInfoManager.GetUserInfobyAccount_ORM(Account);
+
+            if (level.User_level == 0)
+            {
+                Response.Redirect("~/SystemAdmin/AdminList.aspx");
+            }
+            else
+            {
+                Response.Redirect("List.aspx");
+            }
         }
     }
 }
