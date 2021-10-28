@@ -80,13 +80,14 @@ namespace Questionnaire1029
 
             Answer answer = new Answer()
             {
-                A_id = int.Parse(DateTime.Now.ToString("MMddHHmmss")),
+                A_id = int.Parse(DateTime.Now.ToString("mmss")),
                 T_id = int.Parse(id),
                 A_name = name,
                 A_phone = phone,
                 A_email = email,
                 A_age = age,
-                QC_ansrd1 = Answers
+                QC_ansrd1 = Answers,
+                CreateDate = DateTime.Now.ToLocalTime()
             };
             AuthManager.CreateAnswer(answer);
             var Account = this.Session["User"].ToString();

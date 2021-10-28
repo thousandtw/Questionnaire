@@ -149,6 +149,27 @@ namespace Questionnaire.Auth
             }
         }
 
+        public static List<Answer> GetAnswerList()
+        {
+            using (ContextModel context = new ContextModel())
+            {
+                try
+                {
+                    var query = (from item in context.Answers
+                                 orderby item.T_id descending
+                                 select item); ;
+
+                    var list = query.ToList();
+                    return list;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Writelog(ex);
+                    return null;
+                }
+            }
+        }
+
         public static void CreateAnswer(Answer answer)
         {
             try

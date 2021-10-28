@@ -11,7 +11,7 @@ namespace Questionnaire1029.SystemAdmin
 {
 
 
-    public partial class DetailData
+    public partial class DataConfirmPage
     {
 
         /// <summary>
@@ -24,48 +24,75 @@ namespace Questionnaire1029.SystemAdmin
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// btnSend 控制項。
+        /// txbName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSend;
+        protected global::System.Web.UI.WebControls.TextBox txbName;
 
         /// <summary>
-        /// gv_Data 控制項。
+        /// txbEmail 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_Data;
+        protected global::System.Web.UI.WebControls.TextBox txbEmail;
 
         /// <summary>
-        /// ltPager 控制項。
+        /// txbMobilePhone 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltPager;
+        protected global::System.Web.UI.WebControls.TextBox txbMobilePhone;
 
         /// <summary>
-        /// ucPager 控制項。
+        /// txbAge 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::Questionnaire1029.UserControls.ucPager ucPager;
+        protected global::System.Web.UI.WebControls.TextBox txbAge;
 
         /// <summary>
-        /// plcNoData 控制項。
+        /// ltlTime 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder plcNoData;
+        protected global::System.Web.UI.WebControls.Literal ltlTime;
+
+        /// <summary>
+        /// txbMust 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txbMust;
+
+        /// <summary>
+        /// txbnormal 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txbnormal;
+
+        /// <summary>
+        /// Cblplural 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList Cblplural;
     }
 }
