@@ -9,6 +9,29 @@ namespace Questionnaire.Auth
 {
     public class AuthManager
     {
+        public static Answer GetAnswerByID(int id)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    var query =
+                        (from item in context.Answers
+                         where item.A_id == id
+                         select item);
+
+                    var obj = query.FirstOrDefault();
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
+            }
+        }
+
+
         public static void CreateQT(Question question)
         {
             try
@@ -149,6 +172,7 @@ namespace Questionnaire.Auth
             }
         }
 
+      
         public static List<Answer> GetAnswerList()
         {
             using (ContextModel context = new ContextModel())

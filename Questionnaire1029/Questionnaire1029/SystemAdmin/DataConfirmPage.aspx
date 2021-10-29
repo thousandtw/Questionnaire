@@ -23,35 +23,39 @@
                         <asp:TextBox ID="txbMobilePhone" runat="server"></asp:TextBox><br />
                         <a>年齡</a>
                         <asp:TextBox ID="txbAge" runat="server"></asp:TextBox><br />
-                        <asp:Literal ID="ltlTime" runat="server"></asp:Literal>
+                    </td>
+                    <td>
+                          &nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
+                       <asp:Literal ID="ltlTime" runat="server"></asp:Literal>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>1.測試文字方塊(必填)</p>
-                        <asp:TextBox ID="txbMust" runat="server"></asp:TextBox>
+                        <p>問卷名稱</p>
+                        <asp:TextBox ID="txbSurvey" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>2.測試文字方塊</p>
-                        <asp:TextBox ID="txbnormal" runat="server"></asp:TextBox>
+                        <p>問題</p>
+                        <asp:TextBox ID="txbQt" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>3.測試複選(必填)</p>
-                        <asp:CheckBoxList ID="Cblplural" runat="server"></asp:CheckBoxList>
+                        <p>選項</p>
+                        <asp:TextBox ID="txbOptions" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </td>
-                    <%--<td>
-                        <p>3.測試單選(必填)</p>
-                        <asp:CheckBoxList ID="CheckBoxList1" runat="server"></asp:CheckBoxList>
-                    </td>--%>
+                </tr>
+                <tr>
+                    <td>
+                        <p>回答</p>
+                        <asp:TextBox ID="txbAnswer" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    </td>
                 </tr>
             </table>
         </div>

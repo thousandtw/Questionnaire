@@ -69,30 +69,39 @@ namespace Questionnaire1029.SystemAdmin
         protected global::System.Web.UI.WebControls.Literal ltlTime;
 
         /// <summary>
-        /// txbMust 控制項。
+        /// txbSurvey 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbMust;
+        protected global::System.Web.UI.WebControls.TextBox txbSurvey;
 
         /// <summary>
-        /// txbnormal 控制項。
+        /// txbQt 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbnormal;
+        protected global::System.Web.UI.WebControls.TextBox txbQt;
 
         /// <summary>
-        /// Cblplural 控制項。
+        /// txbOptions 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList Cblplural;
+        protected global::System.Web.UI.WebControls.TextBox txbOptions;
+
+        /// <summary>
+        /// txbAnswer 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txbAnswer;
     }
 }

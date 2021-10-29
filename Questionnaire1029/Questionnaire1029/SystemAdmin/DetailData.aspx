@@ -26,7 +26,7 @@
                         <asp:BoundField DataField="CreateDate" HeaderText="填寫時間" DataFormatString="{0:yyyy/MM/dd HH:mm}" />
                         <asp:TemplateField HeaderText="觀看細節">
                             <ItemTemplate>
-                                <a href="DataConfirmPage.aspx?ID=<%# Eval("T_id")%>">前往</a>
+                                <a href="DataConfirmPage.aspx?ID=<%# Eval("A_id")%>">前往</a>
                             </ItemTemplate>
                         </asp:TemplateField>
 
