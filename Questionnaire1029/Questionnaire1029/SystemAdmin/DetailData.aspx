@@ -14,7 +14,7 @@
         <table>
             <tr>
                 <td>
-                    <asp:Button ID="btnSend" runat="server" Text="匯出" />
+                    <asp:Button ID="btnSend" runat="server" Text="匯出" OnClick="btnSend_Click"/>
                 </td>
             </tr>
             <tr>
