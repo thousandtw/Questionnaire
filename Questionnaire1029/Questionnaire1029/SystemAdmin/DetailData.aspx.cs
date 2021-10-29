@@ -78,7 +78,7 @@ namespace Questionnaire1029.SystemAdmin
 
         }
 
-        private void EstablishCSV(DataTable dt, string fileName)    //匯出DataTable並下載為 CSV 檔
+        private void EstablishCSV(DataTable dt, string fileName)    //匯出DataTable並下載為CSV檔
         {
             HttpContext.Current.Response.Clear();
             System.IO.StreamWriter sw = new System.IO.StreamWriter(Response.OutputStream, System.Text.Encoding.UTF8);//防止亂碼

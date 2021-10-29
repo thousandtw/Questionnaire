@@ -31,7 +31,7 @@ namespace Questionnaire1029.SystemAdmin
 
         protected void btnCount_Click(object sender, EventArgs e)
         {
-            IFRAME1.Attributes.Add("src", "DetailCount.aspx");
+            //IFRAME1.Attributes.Add("src", "DetailCount.aspx");
         }
     }
 }

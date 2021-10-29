@@ -39,12 +39,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="AdminList.aspx">問卷管理</a>
+                        <a href="AdminList.aspx">問卷管理首頁</a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="FAQ.aspx">常用問題管理</a>
+                       <%-- <a href="FAQ.aspx">常用問題管理</a>--%>
                     </td>
                 </tr>
             </table>
