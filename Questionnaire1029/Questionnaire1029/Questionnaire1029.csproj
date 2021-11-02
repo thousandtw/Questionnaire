@@ -103,6 +103,7 @@
     <Content Include="js\jquery-3.6.0.js" />
     <Content Include="List.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="SQLServer\script.sql" />
     <Content Include="Stastic.aspx" />
     <Content Include="SystemAdmin\DataConfirmPage.aspx" />
     <Content Include="SystemAdmin\Detail.aspx" />
