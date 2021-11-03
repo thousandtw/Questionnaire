@@ -44,20 +44,13 @@ namespace Questionnaire1029.SystemAdmin
         {
             for (int i = 0; i < gv_list.Rows.Count; i++)
             {
-                if (gv_list.Rows[i].Cells[3].Text == "0")
+                if (gv_list.Rows[i].Cells[3].Text == "1")
                 {
-                    gv_list.Rows[i].Cells[3].Text = "尚未開始";
-                }
-                else if (gv_list.Rows[i].Cells[3].Text == "1")
-                {
-                    gv_list.Rows[i].Cells[3].Text = "投票中";
+                    gv_list.Rows[i].Cells[3].Text = "開放中";
                 }
                 else if (gv_list.Rows[i].Cells[3].Text == "2")
                 {
-                    gv_list.Rows[i].Cells[3].Text = "已完結";
-                    int tid = int.Parse(gv_list.Rows[i].Cells[1].Text);
-                    var theme = AuthManager.GetThemeByID(tid);
-                    gv_list.Rows[i].Cells[2].Text = theme.T_title;
+                    gv_list.Rows[i].Cells[3].Text = "已關閉";
                 }
             }
         }
