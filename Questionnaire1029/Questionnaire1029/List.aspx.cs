@@ -2,6 +2,7 @@
 using Questionnaire.ORM.DBModels;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -14,27 +15,55 @@ namespace Questionnaire1029
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Session["User"] == null)
+            if (!IsPostBack)
             {
-                HttpContext.Current.Response.Redirect("/Login.aspx");
+                if (HttpContext.Current.Session["User"] == null)
+                {
+                    HttpContext.Current.Response.Redirect("/Login.aspx");
+                }
+
+                var list = AuthManager.GeThemeList();
+              
+                this.gv_list.DataSource = list;
+                if (list.Count > 0)
+                {
+                    var PagedList = this.GetPagedDataTable(list);
+                    this.gv_list.DataSource = PagedList;
+                    this.gv_list.DataBind();
+
+                    this.ucPager.TotalSize = list.Count;
+                    this.ucPager.Bind();
+                }
+                else
+                {
+                    this.gv_list.Visible = false;
+                    this.plcNoData.Visible = true;
+                }
+            }
+        }
+
+        protected void gv_list_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            for (int i = 0; i < gv_list.Rows.Count; i++)
+            {
+                if (gv_list.Rows[i].Cells[2].Text == "0")
+                {
+                    gv_list.Rows[i].Cells[2].Text = "尚未開始";
+                }
+                else if (gv_list.Rows[i].Cells[2].Text == "1")
+                {
+                    gv_list.Rows[i].Cells[2].Text = "投票中";
+                }
+                else if (gv_list.Rows[i].Cells[2].Text == "2")
+                {
+                    gv_list.Rows[i].Cells[2].Text = "已完結";
+                    int tid = int.Parse(gv_list.Rows[i].Cells[0].Text);
+                    var theme = AuthManager.GetThemeByID(tid);
+                    gv_list.Rows[i].Cells[1].Text = theme.T_title;
+                }
             }
 
-            var list = AuthManager.GeThemeList_ByState();
-            this.gv_list.DataSource = list;
-            if (list.Count > 0)
-            {
-                var PagedList = this.GetPagedDataTable(list);
-                this.gv_list.DataSource = PagedList;
-                this.gv_list.DataBind();
-
-                this.ucPager.TotalSize = list.Count;
-                this.ucPager.Bind();
-            }
-            else
-            {
-                this.gv_list.Visible = false;
-                this.plcNoData.Visible = true;
-            }
         }
 
         private int GetcurrentPage()
@@ -162,5 +191,8 @@ namespace Questionnaire1029
         }
 
         protected void txbHeader_TextChanged(object sender, EventArgs e) { }
+
+        protected void gv_list_SelectedIndexChanged(object sender, EventArgs e) { }
+
     }
 }

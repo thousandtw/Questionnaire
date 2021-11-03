@@ -24,19 +24,15 @@
     </div>
     <br />
     <div>
-        <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2">
+        <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2" OnRowDataBound="gv_list_RowDataBound" OnSelectedIndexChanged="gv_list_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="T_id" HeaderText="#" />
                 <asp:TemplateField HeaderText="問卷名稱">
                     <ItemTemplate>
-                        <a href="Form.aspx?ID=<%# Eval("T_id")%>"><%# Eval("T_title")%></a>
+                        <a href="Form.aspx?ID=<%# Eval("T_id")%>" ><%# Eval("T_title")%></a>
                     </ItemTemplate>
                 </asp:TemplateField>
-                 <asp:TemplateField HeaderText="狀態">
-                    <ItemTemplate>
-                        <a>投票中</a>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="T_state" HeaderText="狀態" />
                 <asp:BoundField DataField="T_start" HeaderText="開始日期" DataFormatString="{0:d}" />
                 <asp:BoundField DataField="T_end" HeaderText="結束日期" DataFormatString="{0:d}" />
                 <asp:TemplateField HeaderText="觀看統計">

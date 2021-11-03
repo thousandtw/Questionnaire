@@ -27,14 +27,13 @@ namespace Questionnaire1029
                     string A = GID.ANSR;
                     string[] sArray = A.Split(',');
                     var ID = AuthManager.GetThemeByID(id);
-                    if (ID.T_state == 1)
-                    {
-                        this.lblState.Text = "投票中";
-                        this.lblTime.Text = $"{ID.T_start.ToString()} ~ {ID.T_end.ToString()}";
-                        this.lblHeader.Text = ID.T_title;
-                        this.lblMemo.Text = ID.T_memo;
-                        this.lblQT.Text = GID.QT;
-                    }
+
+                    this.lblState.Text = "投票中";
+                    this.lblTime.Text = $"{ID.T_start.ToString()} ~ {ID.T_end.ToString()}";
+                    this.lblHeader.Text = ID.T_title;
+                    this.lblMemo.Text = ID.T_memo;
+                    this.lblQT.Text = GID.QT;
+
 
                     for (int i = 0; i < sArray.Length; i++)
                     {

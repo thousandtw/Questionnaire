@@ -26,7 +26,7 @@
         <asp:Button ID="btnCrt" runat="server" Text="新增" OnClick="btnCrt_Click" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnDel" runat="server" Text="刪除" OnClick="btnDel_Click" />
     </div>
     <div>
-        <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2">
+        <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2" OnRowDataBound="gv_list_RowDataBound">
             <Columns>
                 <asp:TemplateField HeaderText="勾選">
                     <ItemTemplate>
@@ -40,11 +40,7 @@
                         <a href="../Form.aspx?ID=<%# Eval("T_id")%>"><%# Eval("T_title")%></a>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="狀態">
-                    <ItemTemplate>
-                        <a>投票中</a>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="T_state" HeaderText="狀態" />
                 <asp:BoundField DataField="T_start" HeaderText="開始日期" DataFormatString="{0:d}" />
                 <asp:BoundField DataField="T_end" HeaderText="結束日期" DataFormatString="{0:d}" />
                 <asp:TemplateField HeaderText="觀看統計">

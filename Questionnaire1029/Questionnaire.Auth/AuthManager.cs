@@ -1,6 +1,8 @@
 ﻿using Questionnaire.ORM.DBModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,24 @@ namespace Questionnaire.Auth
 {
     public class AuthManager
     {
+        public static DataTable ConvertToDataTable<T>(IList<T> data)         //List轉DataTable
+        {
+            PropertyDescriptorCollection properties =
+               TypeDescriptor.GetProperties(typeof(T));
+            DataTable table = new DataTable();
+            foreach (PropertyDescriptor prop in properties)
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            foreach (T item in data)
+            {
+                DataRow row = table.NewRow();
+                foreach (PropertyDescriptor prop in properties)
+                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                table.Rows.Add(row);
+            }
+            return table;
+
+        }
+
         public static Answer GetAnswerByID(int id)
         {
             try
@@ -56,7 +76,6 @@ namespace Questionnaire.Auth
                 using (ContextModel context = new ContextModel())
                 {
                     var query = (from item in context.Themes
-                                 where item.T_state==1 
                                  orderby item.T_id descending
                                  select item);
 
@@ -319,14 +338,13 @@ namespace Questionnaire.Auth
             }
         }
 
-        public static List<Theme> GeThemeList_ByState()
+        public static List<Theme> GeThemeList()
         {
             using (ContextModel context = new ContextModel())
             {
                 try
                 {
                     var query = (from item in context.Themes
-                                 where item.T_state==1 
                                  orderby item.T_id descending
                                  select item);
 

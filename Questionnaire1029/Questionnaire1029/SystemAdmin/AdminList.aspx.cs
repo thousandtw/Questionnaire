@@ -21,7 +21,7 @@ namespace Questionnaire1029.SystemAdmin
                     HttpContext.Current.Response.Redirect("/Login.aspx");
                 }
 
-                var list = AuthManager.GeThemeList_ByState();
+                var list = AuthManager.GeThemeList();
                 this.gv_list.DataSource = list;
                 if (list.Count > 0)
                 {
@@ -36,6 +36,28 @@ namespace Questionnaire1029.SystemAdmin
                 {
                     this.gv_list.Visible = false;
                     this.plcNoData.Visible = true;
+                }
+            }
+        }
+
+        protected void gv_list_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            for (int i = 0; i < gv_list.Rows.Count; i++)
+            {
+                if (gv_list.Rows[i].Cells[3].Text == "0")
+                {
+                    gv_list.Rows[i].Cells[3].Text = "尚未開始";
+                }
+                else if (gv_list.Rows[i].Cells[3].Text == "1")
+                {
+                    gv_list.Rows[i].Cells[3].Text = "投票中";
+                }
+                else if (gv_list.Rows[i].Cells[3].Text == "2")
+                {
+                    gv_list.Rows[i].Cells[3].Text = "已完結";
+                    int tid = int.Parse(gv_list.Rows[i].Cells[1].Text);
+                    var theme = AuthManager.GetThemeByID(tid);
+                    gv_list.Rows[i].Cells[2].Text = theme.T_title;
                 }
             }
         }
@@ -188,5 +210,7 @@ namespace Questionnaire1029.SystemAdmin
             }
             Response.Redirect("/SystemAdmin/AdminList.aspx");
         }
+
+        
     }
 }
