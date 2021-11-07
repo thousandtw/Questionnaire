@@ -17,6 +17,9 @@
         <div>
             <asp:Label ID="lblHeader" runat="server" Text="Label" Font-Size="Larger"></asp:Label>
         </div>
+        <asp:Panel ID="Panel1" runat="server"></asp:Panel>
+        <asp:Panel ID="Panel2" runat="server"></asp:Panel>
+        <asp:Panel ID="Panel3" runat="server"></asp:Panel>
     </form>
 </body>
 </html>

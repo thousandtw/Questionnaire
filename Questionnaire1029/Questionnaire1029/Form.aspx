@@ -56,13 +56,16 @@
             </tr>
         </table>
     </div>
-    <br />
     <div>
-        <asp:Label ID="lblQT" runat="server" Text="Label"></asp:Label>
-        <asp:CheckBoxList ID="CblVote" runat="server"></asp:CheckBoxList>
+        <asp:Panel ID="Panel1" runat="server"></asp:Panel>
+        <br />
+        <asp:Panel ID="Panel2" runat="server"></asp:Panel>
+        <br />
+        <asp:Panel ID="Panel3" runat="server"></asp:Panel>
     </div>
-    <br />
     <div>
+        &nbsp;
+        &nbsp;
         &nbsp;
     </div>
     <div>

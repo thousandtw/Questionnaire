@@ -27,7 +27,7 @@ namespace Questionnaire1029
             string phone = Answer.Rows[0]["手機"].ToString();
             string email = Answer.Rows[0]["電子信箱"].ToString();
             string age = Answer.Rows[0]["年齡"].ToString();
-            string Answers = Answer.Rows[0]["回答"].ToString();
+
 
             int ids = int.Parse(id);
             var ID = AuthManager.GetThemeByID(ids);
@@ -43,29 +43,31 @@ namespace Questionnaire1029
             lblEmail.Text = email;
             lblAge.Text = age;
 
-            string[] sArray = Answers.Split(',');
-
-            for (int i = 0; i < sArray.Length; i++)
+            string[] checkbox_sb = Answer.Rows[0]["複選方塊"].ToString().Split(',');
+            for (int i = 0; i < checkbox_sb.Count(); i++)
             {
-                ltbVote.Items.Add(sArray[i].ToString());
+                Label label = new Label();
+                label.Text = checkbox_sb[i].Trim();
+                Panel1.Controls.Add(label);
+            }
+            string[] radiobutton_sb = Answer.Rows[0]["單選方塊"].ToString().Split(',');
+            for (int i = 0; i < radiobutton_sb.Count(); i++)
+            {
+                Label label = new Label();
+                label.Text = radiobutton_sb[i].Trim();
+                Panel2.Controls.Add(label);
+            }
+            string[] textbox_sb = Answer.Rows[0]["文字方塊"].ToString().Split(',');
+            for (int i = 0; i < textbox_sb.Count(); i++)
+            {
+                Label label = new Label();
+                label.Text = textbox_sb[i].Trim();
+                Panel3.Controls.Add(label);
             }
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            var Account = this.Session["User"].ToString();
-            var level = UserInfoManager.GetUserInfobyAccount_ORM(Account);
-
-            if (level.User_level == 0)
-            {
-                Response.Redirect("~/SystemAdmin/AdminList.aspx");
-            }
-            else
-            {
-                Response.Redirect("List.aspx");
-            }
-        }
+        protected void Button1_Click(object sender, EventArgs e) { }
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
@@ -76,7 +78,44 @@ namespace Questionnaire1029
             string phone = Answer.Rows[0]["手機"].ToString();
             string email = Answer.Rows[0]["電子信箱"].ToString();
             string age = Answer.Rows[0]["年齡"].ToString();
-            string Answers = Answer.Rows[0]["回答"].ToString();
+            string checkbox_sb = Answer.Rows[0]["複選方塊"].ToString();
+            string radiobutton_sb = Answer.Rows[0]["單選方塊"].ToString();
+            string textbox_sb = Answer.Rows[0]["文字方塊"].ToString();
+            int tid = int.Parse(id);
+
+            string[] checkbox = Answer.Rows[0]["複選方塊"].ToString().Split(',');
+            string[] radiobutton = Answer.Rows[0]["單選方塊"].ToString().Split(',');
+            string[] textbox = Answer.Rows[0]["文字方塊"].ToString().Split(',');
+            var qtList = AuthManager.GetQuestionList(tid);
+            string ckb = "";
+            string rad = "";
+            string txb = "";
+
+            for (int i = 0; i < qtList.Count; i++)                                      //移除問題,留答案
+            {
+                string vs = qtList[i].QT.Trim();
+                string type = qtList[i].Q_type;
+                string va = qtList[i].ANSR;
+
+                if (type == "複選方塊")
+                {
+                    checkbox = checkbox.Where(val => val != vs).ToArray();
+                }
+
+                if (type == "單選方塊")
+                {
+                    radiobutton = radiobutton.Where(val => val != vs).ToArray();
+                }
+                if (type == "文字方塊")
+                {
+                    textbox = textbox.Where(val => val != vs).ToArray();
+
+                }
+            }
+
+            ckb = string.Join(",", checkbox);
+            rad = string.Join(",", radiobutton);
+            txb = string.Join(",", textbox);
 
             Answer answer = new Answer()
             {
@@ -86,7 +125,9 @@ namespace Questionnaire1029
                 A_phone = phone,
                 A_email = email,
                 A_age = age,
-                QC_ansrd1 = Answers,
+                QC_ansrd1 = ckb,
+                QC_ansrd2 = rad,
+                QC_ansrd3 = txb,
                 CreateDate = DateTime.Now.ToLocalTime()
             };
             AuthManager.CreateAnswer(answer);

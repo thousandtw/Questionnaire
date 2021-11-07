@@ -43,7 +43,7 @@ namespace Questionnaire1029.SystemAdmin
             }
             else
             {
-                use = 0;
+                use = 2;
             }
 
             List<string> msgList = new List<string>();

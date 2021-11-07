@@ -297,6 +297,28 @@ namespace Questionnaire.Auth
             }
         }
 
+        public static Question GetQuestionByID_QT(int id,string qt)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    var query =
+                        (from item in context.Questions
+                         where item.T_id == id && item.QT==qt
+                         select item);
+
+                    var obj = query.FirstOrDefault();
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
+            }
+        }
+
         public static List<Question> GetQuestionList(int id)
         {
             using (ContextModel context = new ContextModel())
@@ -304,7 +326,7 @@ namespace Questionnaire.Auth
                 try
                 {
                     var query = (from item in context.Questions
-                                 where item.T_id == id
+                                 where item.T_id == id 
                                  select item);
 
                     var list = query.ToList();

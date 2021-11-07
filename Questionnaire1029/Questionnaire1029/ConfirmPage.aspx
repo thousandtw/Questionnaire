@@ -51,9 +51,12 @@
         </table>
     </div>
     <br />
-    <div>
-        <p>1.已投票</p>
-        <asp:ListBox ID="ltbVote" runat="server"></asp:ListBox>
+     <div>
+        <asp:Panel ID="Panel1" runat="server"></asp:Panel>
+        <br />
+        <asp:Panel ID="Panel2" runat="server"></asp:Panel>
+        <br />
+        <asp:Panel ID="Panel3" runat="server"></asp:Panel>
     </div>
     <br />
     <div>
@@ -63,7 +66,7 @@
         <table>
             <tr>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Text="取消" OnClick="Button1_Click" />
+                    <input type="button" onclick="javascript:window.history.go(-1);" value="修改">
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

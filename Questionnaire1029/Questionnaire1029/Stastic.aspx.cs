@@ -25,98 +25,143 @@ namespace Questionnaire1029
                 {
                     var theme = AuthManager.GetThemeByID(id);
                     this.lblHeader.Text = theme.T_title;
-                    string[] xValues = new string[50];
-                    int[] yValues = new int[50];
+                    string[] xValues = new string[100];
+                    int[] yValues = new int[100];
+
+                    string[] xValues2 = new string[100];
+                    int[] yValues2 = new int[100];
+
+                    string[] xValues3 = new string[100];
+                    int[] yValues3 = new int[100];
+
                     List<string> MsgList = new List<string>();
+                    List<string> MsgList2 = new List<string>();
+                    List<string> MsgList3 = new List<string>();
 
                     var qc = AuthManager.GetAnswerListByID(id);
-                    for (int i = 0; i < qc.Count(); i++)
-                    {
-                        string[] vs = qc[i].QC_ansrd1.Split(',');
-                        for (int j = 0; j < vs.Count(); j++)
-                        {
-                            MsgList.Add(vs[j].Trim());
-                        }
-                    }
-                    var q =
-                                from p in MsgList
-                                group p by p.ToString() into g
-                                select new
-                                {
-                                    g.Key,
-                                    count = g.Count()
-                                };
-
-                    var sum = q.ToList();
-
-                    for (int i = 0; i < sum.Count(); i++)
-                    {
-                        xValues[i] = sum[i].Key.ToString();
-                        yValues[i] = sum[i].count;
-                    }
-
-                    //ChartAreas,Series,Legends 基本設定------------------------------------------------
-
-                    Chart Chart1 = new Chart();
-                    Chart1.ChartAreas.Add("ChartArea1"); //圖表區域集合
-                    Chart1.Legends.Add("Legends1"); //圖例集合說明
-                    Chart1.Series.Add("Series1"); //數據序列集合
 
                     //設定 Chart-------------------------------------------------------------------------
-
-                    Chart1.Width = 770;
-                    Chart1.Height = 400;
-                    Title title = new Title();
-                    //title.Text = "圓餅圖";
-                    title.Alignment = ContentAlignment.MiddleCenter;
-                    title.Font = new System.Drawing.Font("Trebuchet MS", 14F, FontStyle.Bold);
-                    Chart1.Titles.Add(title);
-
-                    //設定 ChartArea1--------------------------------------------------------------------
-                    //Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
-                    Chart1.ChartAreas[0].AxisX.Interval = 1;
-
-                    //設定 表格-------------------------------------------------------------------------
-
-                    Chart1.Legends["Legends1"].DockedToChartArea = "ChartArea1"; //顯示在圖表內
-                    Chart1.Legends["Legends1"].Docking = Docking.Right; //自訂顯示位置
-                    Chart1.Legends["Legends1"].BackColor = Color.FromArgb(235, 235, 235);//斜線背景//背景色
-                    Chart1.Legends["Legends1"].BackHatchStyle = ChartHatchStyle.DarkDownwardDiagonal;
-                    Chart1.Legends["Legends1"].BorderWidth = 1;
-                    Chart1.Legends["Legends1"].BorderColor = Color.FromArgb(200, 200, 200);
-
-                    //設定 圓餅圖-----------------------------------------------------------------------
-
-                    Chart1.Series["Series1"].ChartType = SeriesChartType.Pie;
-                    Chart1.Series["Series1"].ChartType = SeriesChartType.Doughnut;
-                    Chart1.Series["Series1"].Points.DataBindXY(xValues, yValues);
-                    Chart1.Series["Series1"].LegendText = "#VALX: [ #PERCENT{P1} ]";      //X軸 + 百分比
-                    Chart1.Series["Series1"].Label = "#VALX\n#PERCENT{P1}";               //X軸 + 百分比
-                    Chart1.Series["Series1"].LabelForeColor = Color.FromArgb(0, 90, 255); //字體顏色
-
-                    //字體設定
-
-                    Chart1.Series["Series1"].Font = new System.Drawing.Font("Trebuchet MS", 10, System.Drawing.FontStyle.Bold);
-                    Chart1.Series["Series1"].Points.FindMaxByValue().LabelForeColor = Color.Red;
-                    Chart1.Series["Series1"].Points.FindMaxByValue().Color = Color.Red;
-                    Chart1.Series["Series1"].Points.FindMaxByValue()["Exploded"] = "true";
-                    Chart1.Series["Series1"].BorderColor = Color.FromArgb(255, 101, 101, 101);
-                    Chart1.Series["Series1"]["DoughnutRadius"] = "80";
-                    Chart1.Series["Series1"]["PieLabelStyle"] = "Disabled"; //數值顯示在圓餅外
-
-
-                    //設定圓餅效果，除 Default 外其他效果3D不適用
-                    Chart1.Series["Series1"]["PieDrawingStyle"] = "SoftEdge";
-
-                    Random rnd = new Random(); //亂數產生區塊顏色
-
-                    foreach (DataPoint point in Chart1.Series["Series1"].Points)
+                    for (int s = 0; s < qc.Count(); s++)
                     {
-                        //pie 顏色
-                        point.Color = Color.FromArgb(150, rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255));
+                        if (qc[s].QC_ansrd1 == null)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            for (int i = 0; i < qc.Count(); i++)
+                            {
+                                string[] vs = qc[i].QC_ansrd1.Split(',');
 
+                                for (int j = 0; j < vs.Count(); j++)
+                                {
+                                    MsgList.Add(vs[j].Trim());
+                                }
+
+                            }
+                            var q =
+                                       from p in MsgList
+                                       group p by p.ToString() into g
+                                       select new
+                                       {
+                                           g.Key,
+                                           count = g.Count()
+                                       };
+
+                            var sum = q.ToList();
+
+                            for (int y = 0; y < sum.Count(); y++)
+                            {
+                                xValues[y] = sum[y].Key.ToString();
+                                yValues[y] = sum[y].count;
+                            }
+                            var char1 = StatisticsManager.statistics(xValues, yValues);
+                            Panel1.Controls.Add(char1);
+                            break;
+                        }
                     }
-                    Controls.Add(Chart1);
+                    //設定 Chart2-------------------------------------------------------------------------
+
+                    for (int s = 0; s < qc.Count(); s++)
+                    {
+                        if (qc[s].QC_ansrd2 == null)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            for (int i = 0; i < qc.Count(); i++)
+                            {
+                                string[] va = qc[i].QC_ansrd2.Split(',');
+
+                                for (int j = 0; j < va.Count(); j++)
+                                {
+                                    MsgList2.Add(va[j].Trim());
+                                }
+
+                            }
+                            var q2 =
+                                     from p in MsgList2
+                                     group p by p.ToString() into g
+                                     select new
+                                     {
+                                         g.Key,
+                                         count = g.Count()
+                                     };
+
+                            var sum2 = q2.ToList();
+
+                            for (int y = 0; y < sum2.Count(); y++)
+                            {
+                                xValues2[y] = sum2[y].Key.ToString();
+                                yValues2[y] = sum2[y].count;
+                            }
+                            var char2 = StatisticsManager.statistics(xValues2, yValues2);
+                            Panel2.Controls.Add(char2);
+                            break;
+                        }
+                    }
+                        //設定 Chart3-------------------------------------------------------------------------
+
+                     for (int s = 0; s < qc.Count(); s++)
+                    {
+                        if (qc[s].QC_ansrd3 == null)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            for (int i = 0; i < qc.Count(); i++)
+                            {
+                                string[] vx = qc[i].QC_ansrd3.Split(',');
+
+                                for (int j = 0; j < vx.Count(); j++)
+                                {
+                                    MsgList3.Add(vx[j].Trim());
+                                }
+
+                            }
+                            var q3 =
+                                      from p in MsgList3
+                                      group p by p.ToString() into g
+                                      select new
+                                      {
+                                          g.Key,
+                                          count = g.Count()
+                                      };
+
+                            var sum3 = q3.ToList();
+
+                            for (int y = 0; y < sum3.Count(); y++)
+                            {
+                                xValues3[y] = sum3[y].Key.ToString();
+                                yValues3[y] = sum3[y].count;
+                            }
+                            var char3 = StatisticsManager.statistics(xValues3, yValues3);
+                            Panel3.Controls.Add(char3);
+                            break;
+                        }
+                    }
                 }
             }
         }

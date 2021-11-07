@@ -35,6 +35,12 @@ namespace Questionnaire.ORM.DBModels
         [StringLength(50)]
         public string QC_ansrd1 { get; set; }
 
+        [StringLength(50)]
+        public string QC_ansrd2 { get; set; }
+
+        [StringLength(50)]
+        public string QC_ansrd3 { get; set; }
+
         public DateTime CreateDate { get; set; }
     }
 }

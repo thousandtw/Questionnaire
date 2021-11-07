@@ -61,11 +61,11 @@
 
                             <asp:BoundField DataField="must" HeaderText="必填" />
 
-                           <%-- <asp:TemplateField HeaderText="">
+                            <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
                                     <a href="DetailQa.aspx?ID=<%# Eval("Qd")%>">編輯</a>
                                 </ItemTemplate>
-                            </asp:TemplateField>--%>
+                            </asp:TemplateField>
                         </Columns>
                         <FooterStyle BackColor="#CCCCCC" />
                         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

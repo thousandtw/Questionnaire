@@ -16,21 +16,21 @@ namespace Questionnaire1029
 
         protected void ScriptManager1_PreRender(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                this.ViewState["postBackTimes"] = -1;
-            }
-            else
-            {
-                if (!this.ScriptManager1.IsInAsyncPostBack)
-                { this.ViewState["postBackTimes"] = Convert.ToInt16(this.ViewState["postBackTimes"]) - 1; }
+            //if (!IsPostBack)
+            //{
+            //    this.ViewState["postBackTimes"] = -1;
+            //}
+            //else
+            //{
+            //    if (!this.ScriptManager1.IsInAsyncPostBack)
+            //    { this.ViewState["postBackTimes"] = Convert.ToInt16(this.ViewState["postBackTimes"]) - 1; }
 
-            }
+            //}
 
-            string gobackjs = @"function MyBack()
-                            {history.go(" + Convert.ToString(this.ViewState["postBackTimes"]) + @");}";
+            //string gobackjs = @"function MyBack()
+            //                {history.go(" + Convert.ToString(this.ViewState["postBackTimes"]) + @");}";
 
-            ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "back", gobackjs, true);
+            //ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "back", gobackjs, true);
         }
     }
 }
