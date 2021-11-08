@@ -103,7 +103,6 @@
     <Content Include="js\jquery-3.6.0.js" />
     <Content Include="List.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="SQLServer\script.sql" />
     <Content Include="Stastic.aspx" />
     <Content Include="SystemAdmin\DataConfirmPage.aspx" />
     <Content Include="SystemAdmin\Detail.aspx" />
@@ -248,6 +247,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="SQLServer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Questionnaire.Auth\Questionnaire.Auth.csproj">
