@@ -23,8 +23,10 @@
                     <th>問題</th>
                     <td>
                         <asp:TextBox ID="txtQT" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;
-                        <asp:DropDownList ID="ddl_QT" runat="server">
+                        <asp:DropDownList ID="ddl_QT" runat="server" OnSelectedIndexChanged="ddl_QT_SelectedIndexChanged" OnTextChanged="ddl_QT_TextChanged">
                             <asp:ListItem Value="1" Text="複選方塊"></asp:ListItem>
+                            <asp:ListItem Value="2" Text="單選方塊"></asp:ListItem>
+                            <asp:ListItem Value="3" Text="文字方塊"></asp:ListItem>
                         </asp:DropDownList>&nbsp;&nbsp;&nbsp;
                         <asp:CheckBox ID="CkbMust" runat="server" />必填
                     </td>

@@ -28,6 +28,7 @@ namespace Questionnaire1029
 
                 object[][] LoadData = new object[dataTable.Rows.Count][];        //宣告二維陣列
                 string[] vs;
+                string QID;
                 string QT;
                 string ANSR;
                 string QTYPE;
@@ -45,13 +46,15 @@ namespace Questionnaire1029
                         LoadData[i][j] = dataTable.Rows[i][j].ToString();
                     }
 
+                    var qid= LoadData[i][0];
                     var qt = LoadData[i][2];                              //表單中的問題
                     var ansr = LoadData[i][3];                            //表單中的選項
                     var qtype = LoadData[i][5];                           //表單中的種類
+                    QID = Convert.ToString(qid);
                     QT = Convert.ToString(qt);
                     ANSR = Convert.ToString(ansr);
                     QTYPE = Convert.ToString(qtype);
-
+                    
                     if (QTYPE == "複選方塊")                              //如果種類為複選方塊
                     {
                         vs = ANSR.Split(',');                             //切割選項
@@ -59,24 +62,20 @@ namespace Questionnaire1029
                         label_1.ID = $"lbl1{s}";
                         label_1.Text = QT;                                //將問題放入label_1並換行
                         Panel1.Controls.Add(label_1);                     //將label_1放入Panel_1
-
                         s += 1;
 
                         for (int x = 0; x < vs.Length; x++)
                         {
                             CheckBox checkBox = new CheckBox();           //宣告CheckBox
-                            checkBox.ID = $"ckb{x}";
+                            checkBox.ID = $"ckb{x+QID}";
                             checkBox.Text = vs[x].ToString();             //將選項放入CheckBox
                             Panel1.Controls.Add(checkBox);                //將checkBox放入panel_1
                         }
                     }
                     else if (QTYPE == "單選方塊")                         //如果種類為單選方塊
                     {
-
                         vs = ANSR.Split(',');
                         Label label_2 = new Label();
-
-
                         label_2.ID = $"lbl2{y}";
                         label_2.Text = QT;
                         Panel2.Controls.Add(label_2);
@@ -85,7 +84,7 @@ namespace Questionnaire1029
                         for (int x = 0; x < vs.Length; x++)
                         {
                             RadioButton radioButton = new RadioButton();
-                            radioButton.ID = $"rdb{x}";
+                            radioButton.ID = $"rdb{x+QID}";
                             radioButton.GroupName = "RBT";
                             radioButton.Text = vs[x].ToString();
                             Panel2.Controls.Add(radioButton);
@@ -93,7 +92,6 @@ namespace Questionnaire1029
                     }
                     else                                                  //如果種類為文字方塊
                     {
-
                         vs = ANSR.Split(',');
                         Label label_3 = new Label();
                         label_3.ID = $"lbl3{z}";
@@ -104,7 +102,7 @@ namespace Questionnaire1029
                         for (int x = 0; x < vs.Length; x++)
                         {
                             TextBox textBox = new TextBox();
-                            textBox.ID = $"txb{x}";
+                            textBox.ID = $"txb{x+QID}";
                             Panel3.Controls.Add(textBox);
                         }
                     }
@@ -139,7 +137,6 @@ namespace Questionnaire1029
             //------以下開始取複選方塊------
 
             StringBuilder checkbox_sb = new StringBuilder();
-
             var lblA = Session["lbl1"].ToString();
 
             if (lblA != "0")
@@ -149,20 +146,21 @@ namespace Questionnaire1029
                 for (int s = 0; s < lbl1count; s++)
                 {
                     var lbl1 = Panel1.FindControl($"lbl1{s}") as Label;
-                    checkbox_sb.Append(lbl1.Text.Trim() + ", ");
+                    checkbox_sb.Append(lbl1.Text.Trim() + ",");
                     qt = lbl1.Text;
                     var Qtn = AuthManager.GetQuestionByID_QT(id, qt);
                     var mustKeyin = Qtn.Q_mustKeyin;                                  //取出是否必填
                     var count = Qtn.ANSR_sum;
+                    var QID = Convert.ToString(Qtn.Q_id);
                     int sum = 0;
                     if (mustKeyin == "是")
                     {
                         for (int i = 0; i < count; i++)
                         {
-                            if ((Panel1.FindControl($"ckb{i}") as CheckBox).Checked)
+                            if ((Panel1.FindControl($"ckb{i+ QID}") as CheckBox).Checked)
                             {
-                                var cbx1 = Panel1.FindControl($"ckb{i}") as CheckBox;
-                                checkbox_sb.Append(cbx1.Text.Trim() + ", ");
+                                var cbx1 = Panel1.FindControl($"ckb{i+ QID}") as CheckBox;
+                                checkbox_sb.Append(cbx1.Text.Trim() + ",");
                                 sum += 1;
                             }
                         }
@@ -171,27 +169,24 @@ namespace Questionnaire1029
                             this.ltMsg.Text = $"<span style='color:red'>{qt}問題為必填,請勾選</span>";
                             return;
                         }
-                        checkbox_sb = checkbox_sb.Remove(checkbox_sb.Length - 2, 2);
                     }
                     else
                     {
                         for (int i = 0; i < count; i++)
                         {
-                            if ((Panel1.FindControl($"ckb{i}") as CheckBox).Checked)
+                            if ((Panel1.FindControl($"ckb{i+ QID}") as CheckBox).Checked)
                             {
-                                var cbx1 = Panel1.FindControl($"ckb{i}") as CheckBox;
-                                checkbox_sb.Append(cbx1.Text.Trim() + ", ");
+                                var cbx1 = Panel1.FindControl($"ckb{i+ QID}") as CheckBox;
+                                checkbox_sb.Append(cbx1.Text.Trim() + ",");
                             }
                         }
                     }
                 }
-                //checkbox_sb = checkbox_sb.Remove(checkbox_sb.Length - 2, 2);
             }
 
             //------以下開始取單選方塊------
 
             StringBuilder radiobutton_sb = new StringBuilder();
-
             var lblB = Session["lbl2"].ToString();
 
             if (lblB != "0")
@@ -201,20 +196,21 @@ namespace Questionnaire1029
                 for (int s = 0; s < lbl1count2; s++)
                 {
                     var lbl2 = Panel2.FindControl($"lbl2{s}") as Label;
-                    radiobutton_sb.Append(lbl2.Text.Trim() + ", ");
+                    radiobutton_sb.Append(lbl2.Text.Trim() + ",");
                     qt2 = lbl2.Text;
                     var Qtn2 = AuthManager.GetQuestionByID_QT(id, qt2);                         //取出是否必填
                     var mustKeyin2 = Qtn2.Q_mustKeyin;
                     var count2 = Qtn2.ANSR_sum;
+                    var QID2 = Convert.ToString(Qtn2.Q_id);
                     int sum2 = 0;
                     if (mustKeyin2 == "是")
                     {
                         for (int i = 0; i < count2; i++)
                         {
-                            if ((Panel2.FindControl($"rdb{i}") as RadioButton).Checked)
+                            if ((Panel2.FindControl($"rdb{i+ QID2}") as RadioButton).Checked)
                             {
-                                var rdb2 = Panel2.FindControl($"rdb{i}") as RadioButton;
-                                radiobutton_sb.Append(rdb2.Text.Trim() + ", ");
+                                var rdb2 = Panel2.FindControl($"rdb{i+ QID2}") as RadioButton;
+                                radiobutton_sb.Append(rdb2.Text.Trim() + ",");
                                 sum2 += 1;
                             }
                         }
@@ -228,10 +224,10 @@ namespace Questionnaire1029
                     {
                         for (int i = 0; i < count2; i++)
                         {
-                            if ((Panel2.FindControl($"rdb{i}") as RadioButton).Checked)
+                            if ((Panel2.FindControl($"rdb{i+ QID2}") as RadioButton).Checked)
                             {
-                                var rdb2 = Panel2.FindControl($"rdb{i}") as RadioButton;
-                                radiobutton_sb.Append(rdb2.Text.Trim() + ", ");
+                                var rdb2 = Panel2.FindControl($"rdb{i+ QID2}") as RadioButton;
+                                radiobutton_sb.Append(rdb2.Text.Trim() + ",");
                             }
                         }
                     }
@@ -243,9 +239,7 @@ namespace Questionnaire1029
             //------以下開始取文字方塊------
 
             StringBuilder textbox_sb = new StringBuilder();
-
             Regex rx = new Regex(@"[\d\u4E00-\u9FA5A-Za-z]");
-
             var lblC = Session["lbl3"].ToString();
 
             if (lblC != "0")
@@ -255,27 +249,27 @@ namespace Questionnaire1029
                 for (int s = 0; s < lbl1count3; s++)
                 {
                     var lbl3 = Panel3.FindControl($"lbl3{s}") as Label;
-                    textbox_sb.Append(lbl3.Text.Trim() + ", ");
+                    textbox_sb.Append(lbl3.Text.Trim() + ",");
                     qt3 = lbl3.Text;
                     var Qtn3 = AuthManager.GetQuestionByID_QT(id, qt3);                         //取出是否必填
                     var mustKeyin3 = Qtn3.Q_mustKeyin;
                     var count3 = Qtn3.ANSR_sum;
+                    var QID3 = Convert.ToString(Qtn3.Q_id);
                     int sum3 = 0;
-
 
                     if (mustKeyin3 == "是")
                     {
                         for (int i = 0; i < count3; i++)
                         {
-                            if (!rx.IsMatch((Panel3.FindControl($"txb{i}") as TextBox).Text))
+                            if (!rx.IsMatch((Panel3.FindControl($"txb{i+ QID3}") as TextBox).Text))
                             {
                                 this.ltMsg.Text = $"<span style='color:red'>答案不能為特殊字元,請重新輸入</span>";
                                 return;
                             }
-                            if ((Panel3.FindControl($"txb{i}") as TextBox).Text != "")
+                            if ((Panel3.FindControl($"txb{i+ QID3}") as TextBox).Text != "")
                             {
-                                var txb3 = Panel3.FindControl($"txb{i}") as TextBox;
-                                textbox_sb.Append(txb3.Text.Trim() + ", ");
+                                var txb3 = Panel3.FindControl($"txb{i+ QID3}") as TextBox;
+                                textbox_sb.Append(txb3.Text.Trim() + ",");
                                 sum3 += 1;
                             }
                         }
@@ -289,20 +283,18 @@ namespace Questionnaire1029
                     {
                         for (int i = 0; i < count3; i++)
                         {
-                            if ((Panel3.FindControl($"txb{i}") as TextBox).Text != "")
+                            if ((Panel3.FindControl($"txb{i+ QID3}") as TextBox).Text != "")
                             {
-                                var txb3 = Panel3.FindControl($"txb{i}") as TextBox;
-                                textbox_sb.Append(txb3.Text.Trim() + ", ");
+                                var txb3 = Panel3.FindControl($"txb{i+ QID3}") as TextBox;
+                                textbox_sb.Append(txb3.Text.Trim() + ",");
                             }
                         }
                     }
                 }
 
-                textbox_sb = textbox_sb.Remove(textbox_sb.Length - 2, 2);
+                //textbox_sb = textbox_sb.Remove(textbox_sb.Length - 2, 2);
             }
            
-
-
             DataTable objectValue = new DataTable();
             objectValue.Columns.Add("問卷名稱");
             objectValue.Columns.Add("姓名");
@@ -313,7 +305,6 @@ namespace Questionnaire1029
             objectValue.Columns.Add("單選方塊");
             objectValue.Columns.Add("文字方塊");
             objectValue.Rows.Add(id, name, phome, email, age, checkbox_sb, radiobutton_sb, textbox_sb);
-
             Session.Add("Answer", objectValue);
 
             Response.Redirect("ConfirmPage.aspx");

@@ -30,6 +30,28 @@ namespace Questionnaire1029.SystemAdmin
 
         protected void btnJoin_Click(object sender, EventArgs e)
         {
+            //if (ddl_QT.SelectedIndex == 2)                         //正則表達式排除特殊字元
+            //{
+            //    if(txbAns.Text!= "無須填寫")
+            //    {
+            //        txbAns.Text = "無須填寫";
+            //        Regex rx = new Regex(@"[\d\u4E00-\u9FA5A-Za-z-/u3002/uff1b/uff0c/uff1a/u201c/u201d/uff08/uff09/u3001/uff1f/u300a/u300b]");
+
+            //        if (string.IsNullOrWhiteSpace(this.txtQT.Text) || string.IsNullOrEmpty(this.txtQT.Text))
+            //        {
+            //            this.ltlMsg.Text = "<span style='color:red'>請輸入問題</span>";
+            //            return;
+            //        }
+            //        else if (!rx.IsMatch(txtQT.Text))
+            //        {
+            //            this.ltlMsg.Text = "<span style='color:red'>問題不能為特殊字元,請重新輸入</span>";
+            //            return;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+                this.ltlMsg.Text = "";
             List<string> msgList = new List<string>();
             if (!this.CheckInput(out msgList))
             {
@@ -37,6 +59,8 @@ namespace Questionnaire1029.SystemAdmin
                 return;
             }
             AddNewRecordRowToGrid();
+            //}
+
         }
 
         private void AddDefaultFirstRecord()
@@ -89,7 +113,17 @@ namespace Questionnaire1029.SystemAdmin
                         string value;
                         if (ddl_QT.SelectedValue == "1")
                         {
-                             value = "複選方塊";
+                            value = "複選方塊";
+                            drCurrentRow["type"] = value;
+                        }
+                        else if (ddl_QT.SelectedValue == "2")
+                        {
+                            value = "單選方塊";
+                            drCurrentRow["type"] = value;
+                        }
+                        else if (ddl_QT.SelectedValue == "3")
+                        {
+                            value = "文字方塊";
                             drCurrentRow["type"] = value;
                         }
                         drCurrentRow["must"] = must;
@@ -131,7 +165,7 @@ namespace Questionnaire1029.SystemAdmin
                     CheckBox cbox = (row.Cells[0].FindControl("Ckbchoose") as CheckBox);
                     if (cbox.Checked)
                     {
-                        var Qid = int.Parse(DateTime.Now.ToString("MMddHHmmss"));
+                        var Qid = int.Parse(DateTime.Now.ToString("sssffff"));
                         int Tid = int.Parse(Session["T_id"].ToString());
                         var QTS = row.Cells[2].Text;
                         var ANSRS = row.Cells[3].Text;
@@ -141,15 +175,21 @@ namespace Questionnaire1029.SystemAdmin
 
                         Question question = new Question
                         {
-                            Q_id=Qid,
-                            T_id=Tid,
-                            QT=QTS,
-                            ANSR=ANSRS,
-                            ANSR_sum=ANSRsum,
-                            Q_type=Qtype,
-                            Q_mustKeyin=QmustKeyin
+                            Q_id = Qid,
+                            T_id = Tid,
+                            QT = QTS,
+                            ANSR = ANSRS,
+                            ANSR_sum = ANSRsum,
+                            Q_type = Qtype,
+                            Q_mustKeyin = QmustKeyin
                         };
-                         AuthManager.CreateQT(question);
+                        AuthManager.CreateQT(question);
+                    }
+                    else
+                    {
+                        this.ltlMsg.Text = "<span style='color:red'>請勾選,再送出</span>";
+                        return;
+
                     }
                 }
             }
@@ -185,7 +225,7 @@ namespace Questionnaire1029.SystemAdmin
                 msglist.Add("<span style='color:red'>請輸入問題</span>");
 
             else if (string.IsNullOrWhiteSpace(this.txbAns.Text) || string.IsNullOrEmpty(this.txbAns.Text))
-                msglist.Add("<span style='color:red'>請輸入回答</span>");
+                msglist.Add("<span style='color:red'>請輸入[無]</span>");
 
             else if (!rx.IsMatch(txtQT.Text))                                                  //正則表達式排除特殊字元
                 msglist.Add("<span style='color:red'>問題不能為特殊字元,請重新輸入</span>");
@@ -200,5 +240,15 @@ namespace Questionnaire1029.SystemAdmin
             else
                 return false;
         }
+
+        protected void ddl_QT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (ddl_QT.SelectedIndex == 2)
+            //{
+            //    this.txbAns.Text = "無須填寫";
+            //}
+        }
+
+        protected void ddl_QT_TextChanged(object sender, EventArgs e) { }
     }
 }

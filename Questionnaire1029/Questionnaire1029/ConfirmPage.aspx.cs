@@ -83,31 +83,40 @@ namespace Questionnaire1029
             string textbox_sb = Answer.Rows[0]["文字方塊"].ToString();
             int tid = int.Parse(id);
 
-            string[] checkbox = Answer.Rows[0]["複選方塊"].ToString().Split(',');
-            string[] radiobutton = Answer.Rows[0]["單選方塊"].ToString().Split(',');
-            string[] textbox = Answer.Rows[0]["文字方塊"].ToString().Split(',');
+            string[] checkbox = checkbox_sb.Split(',');
+            string[] radiobutton = radiobutton_sb.Split(',');
+            string[] textbox = textbox_sb.Split(',');
+
+            checkbox = checkbox.Where(val => val != "").ToArray();
+            radiobutton = radiobutton.Where(val => val != "").ToArray();
+            textbox = textbox.Where(val => val != "").ToArray();
+
             var qtList = AuthManager.GetQuestionList(tid);
-            string ckb = "";
-            string rad = "";
-            string txb = "";
+            string ckb;
+            string rad;
+            string txb;
 
             for (int i = 0; i < qtList.Count; i++)                                      //移除問題,留答案
             {
-                string vs = qtList[i].QT.Trim();
+                string vs = qtList[i].QT;
                 string type = qtList[i].Q_type;
                 string va = qtList[i].ANSR;
 
                 if (type == "複選方塊")
                 {
+                   
                     checkbox = checkbox.Where(val => val != vs).ToArray();
+
                 }
 
                 if (type == "單選方塊")
                 {
+                    
                     radiobutton = radiobutton.Where(val => val != vs).ToArray();
                 }
                 if (type == "文字方塊")
                 {
+                    
                     textbox = textbox.Where(val => val != vs).ToArray();
 
                 }

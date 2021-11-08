@@ -43,7 +43,7 @@ namespace Questionnaire1029
                     //設定 Chart-------------------------------------------------------------------------
                     for (int s = 0; s < qc.Count(); s++)
                     {
-                        if (qc[s].QC_ansrd1 == null)
+                        if (string.IsNullOrWhiteSpace(qc[s].QC_ansrd1) || string.IsNullOrEmpty(qc[s].QC_ansrd1))
                         {
                             break;
                         }
@@ -84,7 +84,7 @@ namespace Questionnaire1029
 
                     for (int s = 0; s < qc.Count(); s++)
                     {
-                        if (qc[s].QC_ansrd2 == null)
+                        if (string.IsNullOrWhiteSpace(qc[s].QC_ansrd2) || string.IsNullOrEmpty(qc[s].QC_ansrd2))
                         {
                             break;
                         }
@@ -125,7 +125,7 @@ namespace Questionnaire1029
 
                      for (int s = 0; s < qc.Count(); s++)
                     {
-                        if (qc[s].QC_ansrd3 == null)
+                        if (string.IsNullOrWhiteSpace(qc[s].QC_ansrd3) || string.IsNullOrEmpty(qc[s].QC_ansrd3))
                         {
                             break;
                         }
