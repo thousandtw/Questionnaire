@@ -24,38 +24,6 @@ namespace Questionnaire.ORM.DBModels
         public string ANSR_1 { get; set; }
 
         [Key]
-        [Column(Order = 3)]
-        [StringLength(50)]
-        public string ANSR_2 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_3 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_4 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_5 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_6 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_7 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_8 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_9 { get; set; }
-
-        [StringLength(50)]
-        public string ANSR_10 { get; set; }
-
-        [StringLength(250)]
-        public string QC_memo { get; set; }
-
-        [Key]
         [Column(Order = 4)]
         [StringLength(2)]
         public string QC_type { get; set; }
