@@ -24,34 +24,54 @@ namespace Questionnaire1029.SystemAdmin
             }
             if (!IsPostBack)
             {
+                var qtcm = AuthManager.GetQuestionCmList();
+
+                for (int i = 0; i < qtcm.Count; i++)
+                {
+                    string title = qtcm[i].QC_title.ToString();
+                    string id = qtcm[i].QC_id.ToString();
+                    ddl_Type.Items.Add(new ListItem(title, id));
+                }
                 AddDefaultFirstRecord();
+            }
+        }
+
+        protected void ddl_Type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddl_Type.SelectedIndex != 0)
+            {
+                var id = int.Parse(ddl_Type.SelectedValue);
+                var qtcm = AuthManager.GetQuestionCMbyID(id);
+                txtQT.Text = qtcm.QC_title;
+                txbAns.Text = qtcm.ANSR_1;
+
+                if (qtcm.QC_type == "複選方塊")
+                {
+                    ddl_QT.SelectedValue = "1";
+                }
+                else if (qtcm.QC_type == "單選方塊")
+                {
+                    ddl_QT.SelectedValue = "2";
+                }
+                else
+                {
+                    ddl_QT.SelectedValue = "3";
+                }
+
+                if (qtcm.QC_mustKeyin == "是")
+                {
+                    CkbMust.Checked = true;
+                }
+                else
+                {
+                    CkbMust.Checked = false;
+                }
             }
         }
 
         protected void btnJoin_Click(object sender, EventArgs e)
         {
-            //if (ddl_QT.SelectedIndex == 2)                         //正則表達式排除特殊字元
-            //{
-            //    if(txbAns.Text!= "無須填寫")
-            //    {
-            //        txbAns.Text = "無須填寫";
-            //        Regex rx = new Regex(@"[\d\u4E00-\u9FA5A-Za-z-/u3002/uff1b/uff0c/uff1a/u201c/u201d/uff08/uff09/u3001/uff1f/u300a/u300b]");
-
-            //        if (string.IsNullOrWhiteSpace(this.txtQT.Text) || string.IsNullOrEmpty(this.txtQT.Text))
-            //        {
-            //            this.ltlMsg.Text = "<span style='color:red'>請輸入問題</span>";
-            //            return;
-            //        }
-            //        else if (!rx.IsMatch(txtQT.Text))
-            //        {
-            //            this.ltlMsg.Text = "<span style='color:red'>問題不能為特殊字元,請重新輸入</span>";
-            //            return;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-                this.ltlMsg.Text = "";
+            this.ltlMsg.Text = "";
             List<string> msgList = new List<string>();
             if (!this.CheckInput(out msgList))
             {
@@ -59,8 +79,6 @@ namespace Questionnaire1029.SystemAdmin
                 return;
             }
             AddNewRecordRowToGrid();
-            //}
-
         }
 
         private void AddDefaultFirstRecord()
@@ -241,14 +259,8 @@ namespace Questionnaire1029.SystemAdmin
                 return false;
         }
 
-        protected void ddl_QT_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (ddl_QT.SelectedIndex == 2)
-            //{
-            //    this.txbAns.Text = "無須填寫";
-            //}
-        }
-
-        protected void ddl_QT_TextChanged(object sender, EventArgs e) { }
+        protected void ddl_QT_SelectedIndexChanged(object sender, EventArgs e){}
+        protected void ddl_QT_TextChanged(object sender, EventArgs e) {}
+        protected void ddl_Type_DataBound(object sender, EventArgs e){}
     }
 }

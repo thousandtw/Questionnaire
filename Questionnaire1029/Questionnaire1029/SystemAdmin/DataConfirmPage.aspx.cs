@@ -17,16 +17,20 @@ namespace Questionnaire1029.SystemAdmin
             var Tid = answer.T_id;
             var theme = AuthManager.GetThemeByID(Tid);
             var question = AuthManager.GetQuestionByID(Tid);
-
+            var questionList = AuthManager.GetQuestionList(Tid);
+           
             this.txbName.Text = answer.A_name;
             this.txbEmail.Text = answer.A_email;
             this.txbMobilePhone.Text = answer.A_phone;
             this.txbAge.Text = answer.A_age;
             this.ltlTime.Text = answer.CreateDate.ToString();
             this.txbSurvey.Text = theme.T_title;
-            this.txbQt.Text = question.QT;
-            this.txbOptions.Text = question.ANSR;
-            this.txbAnswer.Text = answer.QC_ansrd1;
+            for(int i = 0; i < questionList.Count(); i++)
+            {
+                txbQt.Text += questionList[i].QT.Trim() + "\r\n ";
+                txbOptions.Text += questionList[i].ANSR.Trim() + "\r\n ";
+            }
+            this.txbAnswer.Text = answer.QC_ansrd1+ "\r\n "+answer.QC_ansrd2+ "\r\n "+answer.QC_ansrd3;
 
             this.txbName.Enabled=false;
             this.txbEmail.Enabled = false;

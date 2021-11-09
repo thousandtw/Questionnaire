@@ -14,8 +14,8 @@
                 <tr>
                     <th>種類</th>
                     <td>
-                        <asp:DropDownList ID="ddl_Type" runat="server">
-                            <asp:ListItem Value="1" Text="自訂問題"></asp:ListItem>
+                        <asp:DropDownList ID="ddl_Type" runat="server" OnDataBound="ddl_Type_DataBound" AutoPostBack="true" OnSelectedIndexChanged="ddl_Type_SelectedIndexChanged">
+                            <asp:ListItem Value="0" Text="自訂問題"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>

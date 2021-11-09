@@ -319,6 +319,28 @@ namespace Questionnaire.Auth
             }
         }
 
+        public static Question_Common GetQuestionCMbyID(int id)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    var query =
+                        (from item in context.Question_Common
+                         where item.QC_id == id
+                         select item);
+
+                    var obj = query.FirstOrDefault();
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
+            }
+        }
+
         public static List<Question> GetQuestionList(int id)
         {
             using (ContextModel context = new ContextModel())
@@ -339,6 +361,28 @@ namespace Questionnaire.Auth
                 }
             }
         }
+
+        public static List<Question_Common> GetQuestionCmList()
+        {
+            using (ContextModel context = new ContextModel())
+            {
+                try
+                {
+                    var query = (from item in context.Question_Common
+                                 orderby item.QC_id
+                                 select item);
+
+                    var list = query.ToList();
+                    return list;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Writelog(ex);
+                    return null;
+                }
+            }
+        }
+
         public static List<Theme> GetThemesByHeader(string header)
         {
             using (ContextModel context = new ContextModel())
