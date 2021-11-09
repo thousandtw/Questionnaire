@@ -10,23 +10,17 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <h2>選項統計</h2>
+        </div>
+        <div>
             <table>
                 <tr>
-                    <th>1.測試文字方塊(必填欄位)</th>
-                    <td></td>
+                    <asp:Panel ID="Panel1" runat="server"></asp:Panel>
                 </tr>
-                <tr>
-                    <th>2.測試文字方塊</th>
-                    <td></td>
+                <tr><td>&nbsp;&nbsp;</td></tr>
+                 <tr>
+                     <asp:Panel ID="Panel2" runat="server"></asp:Panel>
                 </tr>
-                <tr>
-                    <th>3.測試複選(必填)</th>
-                    <td></td>
-                </tr>
-               <%-- <tr>
-                    <th>4.測試單選(必填)</th>
-                    <td></td>
-                </tr>--%>
             </table>
         </div>
     </form>

@@ -114,7 +114,7 @@ namespace Questionnaire.Auth
                 using (ContextModel context = new ContextModel())
                 {
                     var obj = context.Themes.Where(o => o.T_id == id).FirstOrDefault();
-                   
+
                     if (obj != null)
                     {
                         context.Themes.Remove(obj);
@@ -179,7 +179,7 @@ namespace Questionnaire.Auth
                     var query = (from item in context.Answers
                                  where item.T_id == id
                                  select item); ;
-                    
+
                     var list = query.ToList();
                     return list;
                 }
@@ -191,7 +191,7 @@ namespace Questionnaire.Auth
             }
         }
 
-      
+
         public static List<Answer> GetAnswerList()
         {
             using (ContextModel context = new ContextModel())
@@ -220,7 +220,7 @@ namespace Questionnaire.Auth
                 using (ContextModel context = new ContextModel())
                 {
                     context.Answers.Add(answer);
-                    
+
                     context.SaveChanges();
                 }
             }
@@ -230,7 +230,7 @@ namespace Questionnaire.Auth
             }
         }
 
-        public static List<Theme> GetThemeByDate( DateTime startTime, DateTime endTime)
+        public static List<Theme> GetThemeByDate(DateTime startTime, DateTime endTime)
         {
             using (ContextModel context = new ContextModel())
             {
@@ -251,9 +251,9 @@ namespace Questionnaire.Auth
             }
         }
 
-       
 
-        public static Theme GetThemeByID (int id)
+
+        public static Theme GetThemeByID(int id)
         {
             try
             {
@@ -297,7 +297,7 @@ namespace Questionnaire.Auth
             }
         }
 
-        public static Question GetQuestionByID_QT(int id,string qt)
+        public static Question GetQuestionByID_QT(int id, string qt)
         {
             try
             {
@@ -305,7 +305,7 @@ namespace Questionnaire.Auth
                 {
                     var query =
                         (from item in context.Questions
-                         where item.T_id == id && item.QT==qt
+                         where item.T_id == id && item.QT == qt
                          select item);
 
                     var obj = query.FirstOrDefault();
@@ -326,7 +326,7 @@ namespace Questionnaire.Auth
                 try
                 {
                     var query = (from item in context.Questions
-                                 where item.T_id == id 
+                                 where item.T_id == id
                                  select item);
 
                     var list = query.ToList();
@@ -339,14 +339,35 @@ namespace Questionnaire.Auth
                 }
             }
         }
-            public static List<Theme> GetThemesByHeader(string header)
+        public static List<Theme> GetThemesByHeader(string header)
         {
             using (ContextModel context = new ContextModel())
             {
                 try
                 {
                     var query = (from item in context.Themes
-                                 where item.T_title== header
+                                 where item.T_title == header
+                                 select item);
+
+                    var list = query.ToList();
+                    return list;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Writelog(ex);
+                    return null;
+                }
+            }
+        }
+
+        public static List<Question_Common> GetQuestion_cmByHeader(string header)
+        {
+            using (ContextModel context = new ContextModel())
+            {
+                try
+                {
+                    var query = (from item in context.Question_Common
+                                 where item.QC_title == header
                                  select item);
 
                     var list = query.ToList();
@@ -368,6 +389,27 @@ namespace Questionnaire.Auth
                 {
                     var query = (from item in context.Themes
                                  orderby item.T_id descending
+                                 select item);
+
+                    var list = query.ToList();
+                    return list;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Writelog(ex);
+                    return null;
+                }
+            }
+        }
+
+        public static List<Question_Common> GeQuestionCommonList()
+        {
+            using (ContextModel context = new ContextModel())
+            {
+                try
+                {
+                    var query = (from item in context.Question_Common
+                                 orderby item.QC_id descending
                                  select item);
 
                     var list = query.ToList();

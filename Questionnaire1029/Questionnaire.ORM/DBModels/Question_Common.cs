@@ -25,12 +25,12 @@ namespace Questionnaire.ORM.DBModels
 
         [Key]
         [Column(Order = 4)]
-        [StringLength(2)]
+        [StringLength(10)]
         public string QC_type { get; set; }
 
         [Key]
         [Column(Order = 5)]
-        [StringLength(1)]
+        [StringLength(10)]
         public string QC_mustKeyin { get; set; }
     }
 }

@@ -232,7 +232,7 @@ namespace Questionnaire1029
                         }
                     }
                 }
-                radiobutton_sb = radiobutton_sb.Remove(radiobutton_sb.Length - 2, 2);
+                //radiobutton_sb = radiobutton_sb.Remove(radiobutton_sb.Length - 2, 2);
             }
                 
 
