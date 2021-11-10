@@ -4,6 +4,7 @@ using Questionnaire.ORM.DBModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,7 +16,6 @@ namespace Questionnaire1029.SystemAdmin
 {
     public partial class DetailQa : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["T_id"] == null)
@@ -234,6 +234,64 @@ namespace Questionnaire1029.SystemAdmin
             }
         }
 
+        protected void gv_Qa_RowCommand1(object sender, GridViewCommandEventArgs e)
+        {
+
+            if (e.CommandName == "LkB")
+            {
+                //拿到linkButton所在的GridViewRow
+                GridViewRow gvrow = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = gvrow.RowIndex;
+
+                //string Qdid = gv_Qa.Rows[index].Cells[1].Text.Trim();
+                string qt = gv_Qa.Rows[index].Cells[2].Text.Trim();
+                string ans = gv_Qa.Rows[index].Cells[3].Text.Trim();
+                string type = gv_Qa.Rows[index].Cells[4].Text.Trim();
+                string must = gv_Qa.Rows[index].Cells[5].Text.Trim();
+
+                txtQT.Text = qt;
+                txbAns.Text = ans;
+
+                if (type == "複選方塊")
+                {
+                    ddl_QT.SelectedValue = "1";
+                }
+                else if (type == "單選方塊")
+                {
+                    ddl_QT.SelectedValue = "2";
+                }
+                else
+                {
+                    ddl_QT.SelectedValue = "3";
+                }
+
+                if (must == "是")
+                {
+                    CkbMust.Checked = true;
+                }
+                else
+                {
+                    CkbMust.Checked = false;
+                }
+
+                gv_Qa.Rows[index].Visible = false;
+            }
+        }
+
+        protected void gv_Qa_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //從第一列檢索 LinkBut​​ton 控件
+
+                LinkButton LinkButton1 = (LinkButton)e.Row.FindControl("LkB1");
+
+                //使用行的索引設置 LinkBut​​ton 的 CommandArgument屬性
+
+                LinkButton1.CommandArgument = e.Row.RowIndex.ToString();
+            }
+        }
+
         private bool CheckInput(out List<string> errorMsgList)
         {
             List<string> msglist = new List<string>();
@@ -259,8 +317,10 @@ namespace Questionnaire1029.SystemAdmin
                 return false;
         }
 
-        protected void ddl_QT_SelectedIndexChanged(object sender, EventArgs e){}
-        protected void ddl_QT_TextChanged(object sender, EventArgs e) {}
-        protected void ddl_Type_DataBound(object sender, EventArgs e){}
+        protected void LkB1_Click(object sender, EventArgs e) { }
+        protected void gv_Qa_RowCommand(object sender, GridViewCommandEventArgs e) { }
+        protected void ddl_QT_SelectedIndexChanged(object sender, EventArgs e) { }
+        protected void ddl_QT_TextChanged(object sender, EventArgs e) { }
+        protected void ddl_Type_DataBound(object sender, EventArgs e) { }
     }
 }

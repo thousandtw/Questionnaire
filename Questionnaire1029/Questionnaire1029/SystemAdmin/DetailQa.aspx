@@ -45,7 +45,7 @@
                 </tr>
                 <tr>
 
-                    <asp:GridView ID="gv_Qa" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2" OnRowDataBound="gv_Qa_RowDataBound">
+                    <asp:GridView ID="gv_Qa" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2" OnRowDataBound="gv_Qa_RowDataBound" OnRowCommand="gv_Qa_RowCommand1" OnRowCreated="gv_Qa_RowCreated">
                         <Columns>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
@@ -65,7 +65,7 @@
 
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <a href="DetailQa.aspx?ID=<%# Eval("Qd")%>">編輯</a>
+                                    <asp:LinkButton ID="LkB1" runat="server"  Text='編輯'  CommandName="LkB"></asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
