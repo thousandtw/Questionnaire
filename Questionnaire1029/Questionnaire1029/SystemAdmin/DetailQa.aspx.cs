@@ -228,7 +228,16 @@ namespace Questionnaire1029.SystemAdmin
                     CheckBox cbox = (row.Cells[0].FindControl("Ckbchoose") as CheckBox);
                     if (cbox.Checked)
                     {
-                        row.Cells.Clear();
+                        DataTable dtCurrentTable = (DataTable)ViewState["Answer"];
+                     
+                        int idx = row.RowIndex;
+                        dtCurrentTable.Rows[idx].Delete();
+                        dtCurrentTable.AcceptChanges();
+
+                        ViewState["Answer"] = dtCurrentTable;
+                        //綁上Gridview的新Row
+                        gv_Qa.DataSource = dtCurrentTable;
+                        gv_Qa.DataBind();
                     }
                 }
             }
@@ -273,8 +282,16 @@ namespace Questionnaire1029.SystemAdmin
                 {
                     CkbMust.Checked = false;
                 }
+             
+                DataTable dtCurrentTable = (DataTable)ViewState["Answer"];
+                dtCurrentTable.Rows[index].Delete();
+                dtCurrentTable.AcceptChanges();
 
-                gv_Qa.Rows[index].Visible = false;
+                ViewState["Answer"] = dtCurrentTable;
+                //綁上Gridview的新Row
+                gv_Qa.DataSource = dtCurrentTable;
+                gv_Qa.DataBind();
+
             }
         }
 

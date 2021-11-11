@@ -19,7 +19,7 @@ namespace Questionnaire1029.SystemAdmin
 
         protected void btnCel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("DetailSurvey.aspx");
+            //Response.Redirect("DetailSurvey.aspx");
         }
 
         protected void btnSed_Click(object sender, EventArgs e)
