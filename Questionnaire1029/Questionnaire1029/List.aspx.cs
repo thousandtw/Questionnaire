@@ -189,10 +189,5 @@ namespace Questionnaire1029
                 this.ltlMsg.Text = "<span style='color:red'>問卷標題或問卷時間,請選擇其中一項搜尋</span>";
             }
         }
-
-        protected void txbHeader_TextChanged(object sender, EventArgs e) { }
-
-        protected void gv_list_SelectedIndexChanged(object sender, EventArgs e) { }
-
     }
 }

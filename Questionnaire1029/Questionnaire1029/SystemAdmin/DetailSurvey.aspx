@@ -43,7 +43,6 @@
             </tr>
             <tr>
                 <td>
-                    <%--<asp:Button ID="btnCel" runat="server" Text="取消" OnClick="btnCel_Click"/>--%>
                      <input type="button" onclick="javascript:window.history.go(-1);" value="取消"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnSed" runat="server" Text="送出" OnClick="btnSed_Click"/>
                 </td>
             </tr>

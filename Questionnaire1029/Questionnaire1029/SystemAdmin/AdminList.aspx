@@ -23,7 +23,7 @@
     </div>
     <br />
     <div>
-        <asp:Button ID="btnCrt" runat="server" Text="新增" OnClick="btnCrt_Click" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnDel" runat="server" Text="刪除" OnClick="btnDel_Click" />
+        <asp:Button ID="btnCrt" runat="server" Text="新增" OnClick="btnCrt_Click" />&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnDel" runat="server" Text="刪除" OnClick="btnDel_Click" OnClientClick="return confirm('確定刪除?')" />
     </div>
     <div>
         <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2" OnRowDataBound="gv_list_RowDataBound">

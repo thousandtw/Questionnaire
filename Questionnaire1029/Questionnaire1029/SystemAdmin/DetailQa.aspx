@@ -14,7 +14,7 @@
                 <tr>
                     <th>種類</th>
                     <td>
-                        <asp:DropDownList ID="ddl_Type" runat="server" OnDataBound="ddl_Type_DataBound" AutoPostBack="true" OnSelectedIndexChanged="ddl_Type_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddl_Type" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_Type_SelectedIndexChanged">
                             <asp:ListItem Value="0" Text="自訂問題"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
@@ -23,7 +23,7 @@
                     <th>問題</th>
                     <td>
                         <asp:TextBox ID="txtQT" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;
-                        <asp:DropDownList ID="ddl_QT" runat="server" OnSelectedIndexChanged="ddl_QT_SelectedIndexChanged" OnTextChanged="ddl_QT_TextChanged">
+                        <asp:DropDownList ID="ddl_QT" runat="server">
                             <asp:ListItem Value="1" Text="複選方塊"></asp:ListItem>
                             <asp:ListItem Value="2" Text="單選方塊"></asp:ListItem>
                             <asp:ListItem Value="3" Text="文字方塊"></asp:ListItem>
@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="btnDel" runat="server" Text="刪除" OnClick="btnDel_Click"/><asp:Literal ID="ltlMsg" runat="server"></asp:Literal>
+                        <asp:Button ID="btnDel" runat="server" Text="刪除" OnClick="btnDel_Click"  OnClientClick="return confirm('確定刪除?')" /><asp:Literal ID="ltlMsg" runat="server"></asp:Literal>
                     </td>
 
                 </tr>

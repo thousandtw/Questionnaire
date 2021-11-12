@@ -51,7 +51,6 @@ namespace Questionnaire.Auth
             }
         }
 
-
         public static void CreateQT(Question question)
         {
             try
@@ -191,7 +190,6 @@ namespace Questionnaire.Auth
             }
         }
 
-
         public static List<Answer> GetAnswerList()
         {
             using (ContextModel context = new ContextModel())
@@ -250,8 +248,6 @@ namespace Questionnaire.Auth
                 }
             }
         }
-
-
 
         public static Theme GetThemeByID(int id)
         {

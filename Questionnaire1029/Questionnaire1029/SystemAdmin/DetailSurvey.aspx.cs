@@ -14,12 +14,6 @@ namespace Questionnaire1029.SystemAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btnCel_Click(object sender, EventArgs e)
-        {
-            //Response.Redirect("DetailSurvey.aspx");
         }
 
         protected void btnSed_Click(object sender, EventArgs e)
@@ -52,7 +46,6 @@ namespace Questionnaire1029.SystemAdmin
                 this.ltMsg.Text = string.Join("<br/>", msgList);
                 return;
             }
-
 
             Theme theme = new Theme
             {

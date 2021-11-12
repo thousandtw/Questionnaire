@@ -203,7 +203,5 @@ namespace Questionnaire1029.SystemAdmin
             }
             Response.Redirect("/SystemAdmin/AdminList.aspx");
         }
-
-        
     }
 }

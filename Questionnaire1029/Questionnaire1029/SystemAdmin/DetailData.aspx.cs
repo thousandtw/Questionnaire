@@ -60,8 +60,6 @@ namespace Questionnaire1029.SystemAdmin
             return list.Skip(startindex).Take(10).ToList();
         }
 
-        
-
         private void EstablishCSV(DataTable dt, string fileName)    //匯出DataTable並下載為CSV檔
         {
             HttpContext.Current.Response.Clear();

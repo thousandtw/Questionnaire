@@ -57,8 +57,6 @@ namespace Questionnaire1029.SystemAdmin
                 Panel1.Controls.Add(label1);
                 Panel1.Controls.Add(char1);
 
-
-
                 //統計單選方塊-------------------------------------------------------------------------
 
                 for (int k = 0; k < answer.Count; k++)

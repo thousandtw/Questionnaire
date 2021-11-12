@@ -36,7 +36,7 @@ namespace Questionnaire1029.SystemAdmin
             }
         }
 
-        protected void ddl_Type_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddl_Type_SelectedIndexChanged(object sender, EventArgs e)  //依照常用問題選擇填入
         {
             if (ddl_Type.SelectedIndex != 0)
             {
@@ -333,11 +333,5 @@ namespace Questionnaire1029.SystemAdmin
             else
                 return false;
         }
-
-        protected void LkB1_Click(object sender, EventArgs e) { }
-        protected void gv_Qa_RowCommand(object sender, GridViewCommandEventArgs e) { }
-        protected void ddl_QT_SelectedIndexChanged(object sender, EventArgs e) { }
-        protected void ddl_QT_TextChanged(object sender, EventArgs e) { }
-        protected void ddl_Type_DataBound(object sender, EventArgs e) { }
     }
 }

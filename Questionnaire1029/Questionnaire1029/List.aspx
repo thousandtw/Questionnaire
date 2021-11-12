@@ -11,7 +11,7 @@
             <tr>
                 <th>問卷標題</th>
                 <td>
-                    <asp:TextBox ID="txbHeader" runat="server" OnTextChanged="txbHeader_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txbHeader" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -24,7 +24,7 @@
     </div>
     <br />
     <div>
-        <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2" OnRowDataBound="gv_list_RowDataBound" OnSelectedIndexChanged="gv_list_SelectedIndexChanged">
+        <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2" OnRowDataBound="gv_list_RowDataBound">
             <Columns>
                 <asp:BoundField DataField="T_id" HeaderText="#" />
                 <asp:TemplateField HeaderText="問卷名稱">
