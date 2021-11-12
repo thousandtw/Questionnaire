@@ -176,6 +176,7 @@ namespace Questionnaire1029.SystemAdmin
 
         protected void btnSed_Click(object sender, EventArgs e)
         {
+            int count=0;
             foreach (GridViewRow row in gv_Qa.Rows)
             {
                 if (row.RowType == DataControlRowType.DataRow)
@@ -202,16 +203,19 @@ namespace Questionnaire1029.SystemAdmin
                             Q_mustKeyin = QmustKeyin
                         };
                         AuthManager.CreateQT(question);
-                    }
-                    else
-                    {
-                        this.ltlMsg.Text = "<span style='color:red'>請勾選,再送出</span>";
-                        return;
-
+                        count += 1;
                     }
                 }
             }
-            Response.Redirect("DetailData.aspx");
+            if (count == 0)
+            {
+                this.ltlMsg.Text = "<span style='color:red'>請勾選問題後,再送出</span>";
+                return;
+            }
+            else
+            {
+                Response.Redirect("DetailData.aspx");
+            }
         }
 
         protected void btnCel_Click(object sender, EventArgs e)
@@ -221,23 +225,54 @@ namespace Questionnaire1029.SystemAdmin
 
         protected void btnDel_Click(object sender, EventArgs e)
         {
+            int count = 0;                           
+            int sum = 1;
             foreach (GridViewRow row in gv_Qa.Rows)
             {
                 if (row.RowType == DataControlRowType.DataRow)
                 {
                     CheckBox cbox = (row.Cells[0].FindControl("Ckbchoose") as CheckBox);
+
                     if (cbox.Checked)
                     {
-                        DataTable dtCurrentTable = (DataTable)ViewState["Answer"];
-                     
-                        int idx = row.RowIndex;
-                        dtCurrentTable.Rows[idx].Delete();
-                        dtCurrentTable.AcceptChanges();
 
-                        ViewState["Answer"] = dtCurrentTable;
-                        //綁上Gridview的新Row
-                        gv_Qa.DataSource = dtCurrentTable;
-                        gv_Qa.DataBind();
+                        DataTable dtCurrentTable = (DataTable)ViewState["Answer"];
+                        int idx = row.RowIndex;
+                        if (idx == 0)
+                        {
+                            dtCurrentTable.Rows[idx].Delete();
+                            dtCurrentTable.AcceptChanges();
+                            ViewState["Answer"] = dtCurrentTable;
+                            //綁上Gridview的新Row
+                            gv_Qa.DataSource = dtCurrentTable;
+                            gv_Qa.DataBind();
+
+                            AddDefaultFirstRecord();                   //重新綁定初始資料格
+                        }
+                        else
+                        {
+                            if (count == 0)                            //計算是否刪除多個
+                            {
+                                dtCurrentTable.Rows[idx].Delete();
+                                dtCurrentTable.AcceptChanges();
+                                ViewState["Answer"] = dtCurrentTable;
+                                //綁上Gridview的新Row
+                                gv_Qa.DataSource = dtCurrentTable;
+                                gv_Qa.DataBind();
+                                count += 1;
+                            }
+                            else                                       //刪除多筆,調整索引值
+                            {
+                                dtCurrentTable.Rows[idx-sum].Delete();  
+                                dtCurrentTable.AcceptChanges();
+                                ViewState["Answer"] = dtCurrentTable;
+                                //綁上Gridview的新Row
+                                gv_Qa.DataSource = dtCurrentTable;
+                                gv_Qa.DataBind();
+                                sum += 1;
+                            }
+                        }
+
                     }
                 }
             }
@@ -282,16 +317,29 @@ namespace Questionnaire1029.SystemAdmin
                 {
                     CkbMust.Checked = false;
                 }
-             
-                DataTable dtCurrentTable = (DataTable)ViewState["Answer"];
-                dtCurrentTable.Rows[index].Delete();
-                dtCurrentTable.AcceptChanges();
 
-                ViewState["Answer"] = dtCurrentTable;
-                //綁上Gridview的新Row
-                gv_Qa.DataSource = dtCurrentTable;
-                gv_Qa.DataBind();
+                if (index == 0)
+                {
+                    DataTable dtCurrentTable = (DataTable)ViewState["Answer"];
+                    dtCurrentTable.Rows[index].Delete();
+                    dtCurrentTable.AcceptChanges();
+                    ViewState["Answer"] = dtCurrentTable;
+                    //綁上Gridview的新Row
+                    gv_Qa.DataSource = dtCurrentTable;
+                    gv_Qa.DataBind();
 
+                    AddDefaultFirstRecord();                   //重新綁定初始資料格
+                }
+                else
+                {
+                    DataTable dtCurrentTable = (DataTable)ViewState["Answer"];
+                    dtCurrentTable.Rows[index].Delete();
+                    dtCurrentTable.AcceptChanges();
+                    ViewState["Answer"] = dtCurrentTable;
+                    //綁上Gridview的新Row
+                    gv_Qa.DataSource = dtCurrentTable;
+                    gv_Qa.DataBind();
+                }
             }
         }
 
