@@ -220,6 +220,8 @@ namespace Questionnaire1029.SystemAdmin
 
         protected void btnCel_Click(object sender, EventArgs e)
         {
+            var tid = int.Parse(Session["T_id"].ToString());
+            AuthManager.DeleteTheme(tid);
             Response.Redirect("DetailSurvey.aspx");
         }
 
