@@ -315,6 +315,29 @@ namespace Questionnaire.Auth
             }
         }
 
+        public static Question GetQuestionByID_ANSR(int id, string ansr)
+        {
+            try
+            {
+                using (ContextModel context = new ContextModel())
+                {
+                    var query =
+                        (from item in context.Questions
+                         
+                         where item.T_id == id && item.ANSR.Contains(ansr)          //以使用者回答比對出問卷標題
+                         select item);
+
+                    var obj = query.FirstOrDefault();
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
+            }
+        }
+
         public static Question_Common GetQuestionCMbyID(int id)
         {
             try

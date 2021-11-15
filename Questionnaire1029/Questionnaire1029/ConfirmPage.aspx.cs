@@ -15,7 +15,6 @@ namespace Questionnaire1029
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (HttpContext.Current.Session["Answer"] == null)
             {
                 HttpContext.Current.Response.Redirect("List.aspx");
@@ -27,7 +26,6 @@ namespace Questionnaire1029
             string phone = Answer.Rows[0]["手機"].ToString();
             string email = Answer.Rows[0]["電子信箱"].ToString();
             string age = Answer.Rows[0]["年齡"].ToString();
-
 
             int ids = int.Parse(id);
             var ID = AuthManager.GetThemeByID(ids);
@@ -64,7 +62,6 @@ namespace Questionnaire1029
                 label.Text = textbox_sb[i].Trim();
                 Panel3.Controls.Add(label);
             }
-
         }
 
         protected void Button1_Click(object sender, EventArgs e) { }
@@ -104,21 +101,16 @@ namespace Questionnaire1029
 
                 if (type == "複選方塊")
                 {
-                   
                     checkbox = checkbox.Where(val => val != vs).ToArray();
-
                 }
 
                 if (type == "單選方塊")
                 {
-                    
                     radiobutton = radiobutton.Where(val => val != vs).ToArray();
                 }
                 if (type == "文字方塊")
                 {
-                    
                     textbox = textbox.Where(val => val != vs).ToArray();
-
                 }
             }
 

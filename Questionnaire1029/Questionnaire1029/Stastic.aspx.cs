@@ -38,8 +38,12 @@ namespace Questionnaire1029
                     List<string> MsgList2 = new List<string>();
                     List<string> MsgList3 = new List<string>();
 
-                    var qc = AuthManager.GetAnswerListByID(id);
+                    int count1 = 0;
+                    int count2 = 0;
+                    int count3 = 0;
 
+                    var qc = AuthManager.GetAnswerListByID(id);
+                    
 
                     //設定 Chart-------------------------------------------------------------------------
                     for (int s = 0; s < qc.Count(); s++)
@@ -77,6 +81,15 @@ namespace Questionnaire1029
                                 yValues[y] = sum[y].count;
                             }
                             var char1 = StatisticsManager.statistics(xValues, yValues);
+
+                            string ansr = sum[0].Key.ToString();
+                            var qts = AuthManager.GetQuestionByID_ANSR(id, ansr);
+                            string QT = qts.QT;
+                            Label label1 = new Label();
+                            label1.Text = QT;
+                            label1.ID = $"lbl1{count1}";
+                            count1 += 1;
+                            Panel1.Controls.Add(label1);
 
                             Panel1.Controls.Add(char1);
                             break;
@@ -119,13 +132,23 @@ namespace Questionnaire1029
                                 yValues2[y] = sum2[y].count;
                             }
                             var char2 = StatisticsManager.statistics(xValues2, yValues2);
+
+                            string ansr2 = sum2[0].Key.ToString();
+                            var qts2 = AuthManager.GetQuestionByID_ANSR(id, ansr2);
+                            string QT2 = qts2.QT;
+                            Label label2 = new Label();
+                            label2.Text = QT2;
+                            label2.ID = $"lbl2{count2}";
+                            count2 += 1;
+                            Panel2.Controls.Add(label2);
+
                             Panel2.Controls.Add(char2);
                             break;
                         }
                     }
-                        //設定 Chart3-------------------------------------------------------------------------
+                    //設定 Chart3-------------------------------------------------------------------------
 
-                     for (int s = 0; s < qc.Count(); s++)
+                    for (int s = 0; s < qc.Count(); s++)
                     {
                         if (string.IsNullOrWhiteSpace(qc[s].QC_ansrd3) || string.IsNullOrEmpty(qc[s].QC_ansrd3))
                         {
@@ -160,6 +183,13 @@ namespace Questionnaire1029
                                 yValues3[y] = sum3[y].count;
                             }
                             var char3 = StatisticsManager.statistics(xValues3, yValues3);
+
+                            Label label3 = new Label();
+                            label3.Text = "其他";
+                            label3.ID = $"lbl3{count3}";
+                            count3 += 1;
+                            Panel3.Controls.Add(label3);
+
                             Panel3.Controls.Add(char3);
                             break;
                         }
