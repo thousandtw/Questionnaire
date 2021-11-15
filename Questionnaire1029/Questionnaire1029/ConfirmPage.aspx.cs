@@ -98,9 +98,9 @@ namespace Questionnaire1029
 
             for (int i = 0; i < qtList.Count; i++)                                      //移除問題,留答案
             {
-                string vs = qtList[i].QT;
-                string type = qtList[i].Q_type;
-                string va = qtList[i].ANSR;
+                string vs = qtList[i].QT.Trim();
+                string type = qtList[i].Q_type.Trim();
+                string va = qtList[i].ANSR.Trim();
 
                 if (type == "複選方塊")
                 {

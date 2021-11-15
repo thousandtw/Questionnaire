@@ -40,6 +40,7 @@ namespace Questionnaire1029
 
                     var qc = AuthManager.GetAnswerListByID(id);
 
+
                     //設定 Chart-------------------------------------------------------------------------
                     for (int s = 0; s < qc.Count(); s++)
                     {
@@ -76,6 +77,7 @@ namespace Questionnaire1029
                                 yValues[y] = sum[y].count;
                             }
                             var char1 = StatisticsManager.statistics(xValues, yValues);
+
                             Panel1.Controls.Add(char1);
                             break;
                         }
