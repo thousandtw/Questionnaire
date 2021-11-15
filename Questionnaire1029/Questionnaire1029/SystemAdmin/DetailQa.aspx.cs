@@ -33,6 +33,20 @@ namespace Questionnaire1029.SystemAdmin
                     ddl_Type.Items.Add(new ListItem(title, id));
                 }
                 AddDefaultFirstRecord();
+
+                //創建表單2  
+                DataTable dt = new DataTable();
+                DataRow dr;
+                dt.TableName = "Answer2";
+                dt.Columns.Add(new DataColumn("qt", typeof(string)));
+                dt.Columns.Add(new DataColumn("ans", typeof(string)));
+                dt.Columns.Add(new DataColumn("type", typeof(string)));
+                dt.Columns.Add(new DataColumn("must", typeof(string)));
+                dt.Columns.Add(new DataColumn("Qd", typeof(int)));
+                dr = dt.NewRow();
+                dt.Rows.Add(dr);
+                //將表單存到ViewState
+                ViewState["Answer2"] = dt;
             }
         }
 
@@ -176,7 +190,7 @@ namespace Questionnaire1029.SystemAdmin
 
         protected void btnSed_Click(object sender, EventArgs e)
         {
-            int count=0;
+            int count = 0;
             foreach (GridViewRow row in gv_Qa.Rows)
             {
                 if (row.RowType == DataControlRowType.DataRow)
@@ -227,8 +241,9 @@ namespace Questionnaire1029.SystemAdmin
 
         protected void btnDel_Click(object sender, EventArgs e)
         {
-            int count = 0;                           
+            int count = 0;
             int sum = 1;
+            int s = 0;
             foreach (GridViewRow row in gv_Qa.Rows)
             {
                 if (row.RowType == DataControlRowType.DataRow)
@@ -237,21 +252,52 @@ namespace Questionnaire1029.SystemAdmin
 
                     if (cbox.Checked)
                     {
-
                         DataTable dtCurrentTable = (DataTable)ViewState["Answer"];
                         int idx = row.RowIndex;
-                        if (idx == 0)
+
+                        if (idx == 0)                                  //如果從索引1開始刪除第一個勾選資料
                         {
+                            
                             dtCurrentTable.Rows[idx].Delete();
                             dtCurrentTable.AcceptChanges();
-                            ViewState["Answer"] = dtCurrentTable;
+                            ViewState["Answer2"] = dtCurrentTable;     //因為後面綁定初始值ViewState["Answer"]恢復初始值,先將刪除後資料放入新的ViewState存放
+
+                            //綁上Gridview的新Row
+                            gv_Qa.DataSource = dtCurrentTable;
+                            gv_Qa.DataBind();
+                            s += 1;
+                            AddDefaultFirstRecord();                   //重新綁定初始資料格
+
+                            DataTable dtCurrentTable2 = (DataTable)ViewState["Answer2"];
+                            ViewState["Answer"] = dtCurrentTable2;    //將刪除後資料放入原ViewState["Answer"]
+                            gv_Qa.DataSource = dtCurrentTable2;
+                            gv_Qa.DataBind();
+
+                            if (dtCurrentTable2.Rows.Count < 1)
+                            {
+                                AddDefaultFirstRecord();                   //重新綁定初始資料格
+                            }
+                        }
+                        else if (s > 0)                               //刪除多筆,調整索引值
+                        {
+                            dtCurrentTable.Rows[idx-sum].Delete();
+                            dtCurrentTable.AcceptChanges();
+
+                            ViewState["Answer2"] = dtCurrentTable;
                             //綁上Gridview的新Row
                             gv_Qa.DataSource = dtCurrentTable;
                             gv_Qa.DataBind();
 
-                            AddDefaultFirstRecord();                   //重新綁定初始資料格
+                            AddDefaultFirstRecord();                  
+
+                            DataTable dtCurrentTable2 = (DataTable)ViewState["Answer2"];
+                            ViewState["Answer"] = dtCurrentTable2;
+                            gv_Qa.DataSource = dtCurrentTable2;
+                            gv_Qa.DataBind();
+                            sum += 1;
                         }
-                        else
+
+                        if (idx > 0 && s == 0)                         //如果從索引1以外的開始刪除第一個勾選資料
                         {
                             if (count == 0)                            //計算是否刪除多個
                             {
@@ -265,7 +311,7 @@ namespace Questionnaire1029.SystemAdmin
                             }
                             else                                       //刪除多筆,調整索引值
                             {
-                                dtCurrentTable.Rows[idx-sum].Delete();  
+                                dtCurrentTable.Rows[idx - sum].Delete();
                                 dtCurrentTable.AcceptChanges();
                                 ViewState["Answer"] = dtCurrentTable;
                                 //綁上Gridview的新Row
@@ -274,7 +320,6 @@ namespace Questionnaire1029.SystemAdmin
                                 sum += 1;
                             }
                         }
-
                     }
                 }
             }
@@ -320,17 +365,24 @@ namespace Questionnaire1029.SystemAdmin
                     CkbMust.Checked = false;
                 }
 
-                if (index == 0)
+                if (index == 0)                                                     //如果從索引1開始刪除第一個勾選資料
                 {
                     DataTable dtCurrentTable = (DataTable)ViewState["Answer"];
                     dtCurrentTable.Rows[index].Delete();
                     dtCurrentTable.AcceptChanges();
-                    ViewState["Answer"] = dtCurrentTable;
+                    ViewState["Answer2"] = dtCurrentTable;                          //提前先將刪除後資料放入新的ViewState存放
                     //綁上Gridview的新Row
                     gv_Qa.DataSource = dtCurrentTable;
                     gv_Qa.DataBind();
-
-                    AddDefaultFirstRecord();                   //重新綁定初始資料格
+                    AddDefaultFirstRecord();                                        //重新綁定初始資料格
+                    DataTable dtCurrentTable2 = (DataTable)ViewState["Answer2"];
+                    ViewState["Answer"] = dtCurrentTable2;                          //將刪除後資料放入原ViewState["Answer"]
+                    gv_Qa.DataSource = dtCurrentTable2;
+                    gv_Qa.DataBind();
+                    if (dtCurrentTable2.Rows.Count < 1)                             
+                    {
+                        AddDefaultFirstRecord();                                    //重新綁定初始資料格
+                    }
                 }
                 else
                 {
