@@ -14,7 +14,6 @@ namespace Questionnaire1029
 {
     public partial class Stastic : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -90,7 +89,6 @@ namespace Questionnaire1029
                             label1.ID = $"lbl1{count1}";
                             count1 += 1;
                             Panel1.Controls.Add(label1);
-
                             Panel1.Controls.Add(char1);
                             break;
                         }
@@ -141,7 +139,6 @@ namespace Questionnaire1029
                             label2.ID = $"lbl2{count2}";
                             count2 += 1;
                             Panel2.Controls.Add(label2);
-
                             Panel2.Controls.Add(char2);
                             break;
                         }
@@ -189,7 +186,6 @@ namespace Questionnaire1029
                             label3.ID = $"lbl3{count3}";
                             count3 += 1;
                             Panel3.Controls.Add(label3);
-
                             Panel3.Controls.Add(char3);
                             break;
                         }

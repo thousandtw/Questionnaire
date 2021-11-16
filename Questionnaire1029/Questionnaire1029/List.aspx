@@ -6,30 +6,30 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
-        <table>
-            <tr>
-                <th>問卷標題</th>
-                <td>
-                    <asp:TextBox ID="txbHeader" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <th>開始/結束</th>
-                <td>
-                    <asp:TextBox ID="txbStr" runat="server" TextMode="Date"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="txbEnd" runat="server" TextMode="Date"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnSer" runat="server" Text="搜尋" OnClick="btnSer_Click" />
-                </td>
-            </tr>
-        </table>
+    <div style="text-align: center">
+        <div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div>
+            <span>問卷標題</span>
+            <asp:TextBox ID="txbHeader" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div>
+            <span>開始/結束</span>
+            <asp:TextBox ID="txbStr" runat="server" TextMode="Date"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="txbEnd" runat="server" TextMode="Date"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnSer" runat="server" Text="搜尋" OnClick="btnSer_Click" />
+        </div>
     </div>
     <br />
-    <div>
-        <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2" OnRowDataBound="gv_list_RowDataBound">
+    <div style="text-align: center">
+        <asp:GridView ID="gv_list" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" ForeColor="Black" CellSpacing="2" OnRowDataBound="gv_list_RowDataBound" HorizontalAlign="Center">
             <Columns>
                 <asp:BoundField DataField="T_id" HeaderText="#" />
                 <asp:TemplateField HeaderText="問卷名稱">
                     <ItemTemplate>
-                        <a href="Form.aspx?ID=<%# Eval("T_id")%>" ><%# Eval("T_title")%></a>
+                        <a href="Form.aspx?ID=<%# Eval("T_id")%>"><%# Eval("T_title")%></a>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="T_state" HeaderText="狀態" />
