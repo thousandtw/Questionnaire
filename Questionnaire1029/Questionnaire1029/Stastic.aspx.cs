@@ -55,7 +55,7 @@ namespace Questionnaire1029
                         {
                             for (int i = 0; i < qc.Count(); i++)
                             {
-                                string[] vs = qc[i].QC_ansrd1.Split(',');
+                                string[] vs = qc[i].QC_ansrd1.Split(';');
 
                                 for (int j = 0; j < vs.Count(); j++)
                                 {
@@ -105,7 +105,7 @@ namespace Questionnaire1029
                         {
                             for (int i = 0; i < qc.Count(); i++)
                             {
-                                string[] va = qc[i].QC_ansrd2.Split(',');
+                                string[] va = qc[i].QC_ansrd2.Split(';');
 
                                 for (int j = 0; j < va.Count(); j++)
                                 {
@@ -155,7 +155,7 @@ namespace Questionnaire1029
                         {
                             for (int i = 0; i < qc.Count(); i++)
                             {
-                                string[] vx = qc[i].QC_ansrd3.Split(',');
+                                string[] vx = qc[i].QC_ansrd3.Split(';');
 
                                 for (int j = 0; j < vx.Count(); j++)
                                 {

@@ -41,21 +41,21 @@ namespace Questionnaire1029
             lblEmail.Text = email;
             lblAge.Text = age;
 
-            string[] checkbox_sb = Answer.Rows[0]["複選方塊"].ToString().Split(',');
+            string[] checkbox_sb = Answer.Rows[0]["複選方塊"].ToString().Split(';');
             for (int i = 0; i < checkbox_sb.Count(); i++)
             {
                 Label label = new Label();
                 label.Text = checkbox_sb[i].Trim();
                 Panel1.Controls.Add(label);
             }
-            string[] radiobutton_sb = Answer.Rows[0]["單選方塊"].ToString().Split(',');
+            string[] radiobutton_sb = Answer.Rows[0]["單選方塊"].ToString().Split(';');
             for (int i = 0; i < radiobutton_sb.Count(); i++)
             {
                 Label label = new Label();
                 label.Text = radiobutton_sb[i].Trim();
                 Panel2.Controls.Add(label);
             }
-            string[] textbox_sb = Answer.Rows[0]["文字方塊"].ToString().Split(',');
+            string[] textbox_sb = Answer.Rows[0]["文字方塊"].ToString().Split(';');
             for (int i = 0; i < textbox_sb.Count(); i++)
             {
                 Label label = new Label();
@@ -80,9 +80,9 @@ namespace Questionnaire1029
             string textbox_sb = Answer.Rows[0]["文字方塊"].ToString();
             int tid = int.Parse(id);
 
-            string[] checkbox = checkbox_sb.Split(',');
-            string[] radiobutton = radiobutton_sb.Split(',');
-            string[] textbox = textbox_sb.Split(',');
+            string[] checkbox = checkbox_sb.Split(';');
+            string[] radiobutton = radiobutton_sb.Split(';');
+            string[] textbox = textbox_sb.Split(';');
 
             checkbox = checkbox.Where(val => val != "").ToArray();
             radiobutton = radiobutton.Where(val => val != "").ToArray();
@@ -114,9 +114,9 @@ namespace Questionnaire1029
                 }
             }
 
-            ckb = string.Join(",", checkbox);
-            rad = string.Join(",", radiobutton);
-            txb = string.Join(",", textbox);
+            ckb = string.Join(";", checkbox);
+            rad = string.Join(";", radiobutton);
+            txb = string.Join(";", textbox);
 
             Answer answer = new Answer()
             {

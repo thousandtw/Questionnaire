@@ -133,11 +133,11 @@ namespace Questionnaire.Auth
             {
                 using (ContextModel context = new ContextModel())
                 {
-                    var obj = context.Questions.Where(o => o.T_id == id).FirstOrDefault();
+                    var obj = context.Questions.Where(o => o.T_id == id).ToList();
 
                     if (obj != null)
                     {
-                        context.Questions.Remove(obj);
+                        context.Questions.RemoveRange(obj); //移除多筆
                         context.SaveChanges();
                     }
                 }

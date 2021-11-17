@@ -34,7 +34,7 @@
                 <tr>
                     <th>回答</th>
                     <td>
-                        <asp:TextBox ID="txbAns" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;(多個答案以 , 分隔)&nbsp;&nbsp;&nbsp;<asp:Button ID="btnJoin" runat="server" Text="加入" OnClick="btnJoin_Click" />
+                        <asp:TextBox ID="txbAns" runat="server"></asp:TextBox>&nbsp;&nbsp;&nbsp;(多個答案以 ; 分隔)&nbsp;&nbsp;&nbsp;<asp:Button ID="btnJoin" runat="server" Text="加入" OnClick="btnJoin_Click" />
                     </td>
                 </tr>
                 <tr>

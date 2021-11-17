@@ -202,7 +202,7 @@ namespace Questionnaire1029.SystemAdmin
                         int Tid = int.Parse(Session["T_id"].ToString());
                         var QTS = row.Cells[2].Text;
                         var ANSRS = row.Cells[3].Text;
-                        var ANSRsum = row.Cells[3].Text.Split(',').Count();
+                        var ANSRsum = row.Cells[3].Text.Split(';').Count();
                         var Qtype = row.Cells[4].Text;
                         var QmustKeyin = row.Cells[5].Text;
 

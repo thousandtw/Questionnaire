@@ -57,7 +57,7 @@ namespace Questionnaire1029
                     
                     if (QTYPE == "複選方塊")                              //如果種類為複選方塊
                     {
-                        vs = ANSR.Split(',');                             //切割選項
+                        vs = ANSR.Split(';');                             //切割選項
                         Label label_1 = new Label();                      //宣告Label
                         label_1.ID = $"lbl1{s}";
                         label_1.Text = QT;                                //將問題放入label_1並換行
@@ -74,7 +74,7 @@ namespace Questionnaire1029
                     }
                     else if (QTYPE == "單選方塊")                         //如果種類為單選方塊
                     {
-                        vs = ANSR.Split(',');
+                        vs = ANSR.Split(';');
                         Label label_2 = new Label();
                         label_2.ID = $"lbl2{y}";
                         label_2.Text = QT;
@@ -92,7 +92,7 @@ namespace Questionnaire1029
                     }
                     else                                                  //如果種類為文字方塊
                     {
-                        vs = ANSR.Split(',');
+                        vs = ANSR.Split(';');
                         Label label_3 = new Label();
                         label_3.ID = $"lbl3{z}";
                         label_3.Text = QT;
@@ -146,7 +146,7 @@ namespace Questionnaire1029
                 for (int s = 0; s < lbl1count; s++)
                 {
                     var lbl1 = Panel1.FindControl($"lbl1{s}") as Label;
-                    checkbox_sb.Append(lbl1.Text.Trim() + ",");
+                    checkbox_sb.Append(lbl1.Text.Trim() + ";");
                     qt = lbl1.Text;
                     var Qtn = AuthManager.GetQuestionByID_QT(id, qt);
                     var mustKeyin = Qtn.Q_mustKeyin;                                  //取出是否必填
@@ -160,7 +160,7 @@ namespace Questionnaire1029
                             if ((Panel1.FindControl($"ckb{i+ QID}") as CheckBox).Checked)
                             {
                                 var cbx1 = Panel1.FindControl($"ckb{i+ QID}") as CheckBox;
-                                checkbox_sb.Append(cbx1.Text.Trim() + ",");
+                                checkbox_sb.Append(cbx1.Text.Trim() + ";");
                                 sum += 1;
                             }
                         }
@@ -177,7 +177,7 @@ namespace Questionnaire1029
                             if ((Panel1.FindControl($"ckb{i+ QID}") as CheckBox).Checked)
                             {
                                 var cbx1 = Panel1.FindControl($"ckb{i+ QID}") as CheckBox;
-                                checkbox_sb.Append(cbx1.Text.Trim() + ",");
+                                checkbox_sb.Append(cbx1.Text.Trim() + ";");
                             }
                         }
                     }
@@ -196,7 +196,7 @@ namespace Questionnaire1029
                 for (int s = 0; s < lbl1count2; s++)
                 {
                     var lbl2 = Panel2.FindControl($"lbl2{s}") as Label;
-                    radiobutton_sb.Append(lbl2.Text.Trim() + ",");
+                    radiobutton_sb.Append(lbl2.Text.Trim() + ";");
                     qt2 = lbl2.Text;
                     var Qtn2 = AuthManager.GetQuestionByID_QT(id, qt2);                         //取出是否必填
                     var mustKeyin2 = Qtn2.Q_mustKeyin;
@@ -210,7 +210,7 @@ namespace Questionnaire1029
                             if ((Panel2.FindControl($"rdb{i+ QID2}") as RadioButton).Checked)
                             {
                                 var rdb2 = Panel2.FindControl($"rdb{i+ QID2}") as RadioButton;
-                                radiobutton_sb.Append(rdb2.Text.Trim() + ",");
+                                radiobutton_sb.Append(rdb2.Text.Trim() + ";");
                                 sum2 += 1;
                             }
                         }
@@ -227,12 +227,11 @@ namespace Questionnaire1029
                             if ((Panel2.FindControl($"rdb{i+ QID2}") as RadioButton).Checked)
                             {
                                 var rdb2 = Panel2.FindControl($"rdb{i+ QID2}") as RadioButton;
-                                radiobutton_sb.Append(rdb2.Text.Trim() + ",");
+                                radiobutton_sb.Append(rdb2.Text.Trim() + ";");
                             }
                         }
                     }
                 }
-                //radiobutton_sb = radiobutton_sb.Remove(radiobutton_sb.Length - 2, 2);
             }
                 
 
@@ -249,7 +248,7 @@ namespace Questionnaire1029
                 for (int s = 0; s < lbl1count3; s++)
                 {
                     var lbl3 = Panel3.FindControl($"lbl3{s}") as Label;
-                    textbox_sb.Append(lbl3.Text.Trim() + ",");
+                    textbox_sb.Append(lbl3.Text.Trim() + ";");
                     qt3 = lbl3.Text;
                     var Qtn3 = AuthManager.GetQuestionByID_QT(id, qt3);                         //取出是否必填
                     var mustKeyin3 = Qtn3.Q_mustKeyin;
@@ -269,7 +268,7 @@ namespace Questionnaire1029
                             if ((Panel3.FindControl($"txb{i+ QID3}") as TextBox).Text != "")
                             {
                                 var txb3 = Panel3.FindControl($"txb{i+ QID3}") as TextBox;
-                                textbox_sb.Append(txb3.Text.Trim() + ",");
+                                textbox_sb.Append(txb3.Text.Trim() + ";");
                                 sum3 += 1;
                             }
                         }
@@ -286,13 +285,11 @@ namespace Questionnaire1029
                             if ((Panel3.FindControl($"txb{i+ QID3}") as TextBox).Text != "")
                             {
                                 var txb3 = Panel3.FindControl($"txb{i+ QID3}") as TextBox;
-                                textbox_sb.Append(txb3.Text.Trim() + ",");
+                                textbox_sb.Append(txb3.Text.Trim() + ";");
                             }
                         }
                     }
                 }
-
-                //textbox_sb = textbox_sb.Remove(textbox_sb.Length - 2, 2);
             }
            
             DataTable objectValue = new DataTable();

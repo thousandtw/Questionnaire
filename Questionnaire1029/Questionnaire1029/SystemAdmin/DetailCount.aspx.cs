@@ -28,7 +28,7 @@ namespace Questionnaire1029.SystemAdmin
                     if (!string.IsNullOrWhiteSpace(answer[i].QC_ansrd1) || !string.IsNullOrEmpty(answer[i].QC_ansrd1))
                     {
 
-                        string[] vs = answer[i].QC_ansrd1.Split(',');
+                        string[] vs = answer[i].QC_ansrd1.Split(';');
                         for (int j = 0; j < vs.Count(); j++)
                         {
                             myLists.Add(vs[j].Trim());
@@ -63,7 +63,7 @@ namespace Questionnaire1029.SystemAdmin
                 {
                     if (!string.IsNullOrWhiteSpace(answer[k].QC_ansrd2) || !string.IsNullOrEmpty(answer[k].QC_ansrd2))
                     {
-                        string[] vs = answer[k].QC_ansrd2.Split(',');
+                        string[] vs = answer[k].QC_ansrd2.Split(';');
                         for (int j = 0; j < vs.Count(); j++)
                         {
                             myLists2.Add(vs[j].Trim());
