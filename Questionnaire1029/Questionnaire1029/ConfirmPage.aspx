@@ -73,7 +73,7 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>
-                    <asp:Button ID="btnSend" runat="server" Text="送出" OnClick="btnSend_Click"/>
+                    <asp:Button ID="btnSend" runat="server" Text="送出" OnClick="btnSend_Click" OnClientClick="return confirm('確定送出?')"/>
                 </td>
             </tr>
         </table>
